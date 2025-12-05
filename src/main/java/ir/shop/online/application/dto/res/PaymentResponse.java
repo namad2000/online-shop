@@ -1,4 +1,4 @@
-package ir.shop.online.application.dto;
+package ir.shop.online.application.dto.res;
 
 
 import lombok.*;

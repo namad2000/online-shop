@@ -19,6 +19,22 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
 
 server:
   port: 8081
+
+
+otp:
+  expiration-time: 300  # 5 دقیقه به ثانیه
+  max-attempts: 3
+  resend-cooldown: 60   # 1 دقیقه به

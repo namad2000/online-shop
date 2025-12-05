@@ -1,4 +1,4 @@
-package ir.shop.online.application.dto;
+package ir.shop.online.application.dto.req;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
