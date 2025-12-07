@@ -43,7 +43,7 @@ public class OTPController {
     public ResponseEntity<?> verifyOTP(
             @RequestBody VerifyOTPRequest request) {
         try {
-
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(
                     Map.of("error", e.getMessage())

@@ -4,10 +4,7 @@ import ir.shop.online.application.dto.otp.OTPType;
 import ir.shop.online.application.service.AuthService;
 import ir.shop.online.application.service.OTPService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -24,11 +21,12 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public void verifyLoginOTP(String mobile, String code) {
-        boolean isValid =  otpService.verifyOTP(mobile, code, OTPType.LOGIN);
+    public boolean verifyLoginOTP(String mobile, String code) {
+        boolean isValid = otpService.verifyOTP(mobile, code, OTPType.LOGIN);
 
         if (isValid) {
 
         }
+        return isValid;
     }
 }

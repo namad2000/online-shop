@@ -6,7 +6,9 @@ public enum ExceptionCode {
     OTP_02("The number of attempts exceeds the allowed limit"),
     OTP_03("My OTP code has expired"),
     OTP_04("Invalid OTP type"),
-    OTP_05("Please wait before requesting again");
+    OTP_05("Please wait before requesting again"),
+    USER_01("User exist now"),
+    ROLE_01("Role not exist");
 
     private final String description;
 
