@@ -5,4 +5,6 @@ import ir.shop.online.domain.model.entity.User;
 
 public interface UserService {
     User signup(CreateUserRequest request);
+
+    User getById(Long userId);
 }

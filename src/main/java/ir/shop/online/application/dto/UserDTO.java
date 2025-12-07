@@ -3,6 +3,7 @@ package ir.shop.online.application.dto;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -27,15 +28,15 @@ public class UserDTO {
     @Email(message = "ایمیل معتبر نیست")
     private String email;
 
-    private String password; // فقط برای ایجاد کاربر جدید
+//    private String password; // فقط برای ایجاد کاربر جدید
 
     private Set<String> roles;
 
-    private Boolean isActive;
+//    private Boolean isActive;
 
     private LocalDateTime createdAt;
-    private LocalDateTime lastLoginAt;
+//    private LocalDateTime lastLoginAt;
 
     // آدرس‌های کاربر
-    // private List<AddressDTO> addresses;
+     private List<AddressDTO> addresses;
 }

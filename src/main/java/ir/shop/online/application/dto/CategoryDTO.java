@@ -19,8 +19,10 @@ public class CategoryDTO {
 
     private String description;
 
+    private Integer level;
+
     private Long parentId;
     private String parentTitle;
 
-    private Integer productCount;
+//    private Integer productCount;
 }

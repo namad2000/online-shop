@@ -1,13 +1,11 @@
 package ir.shop.online.presentation.rest;
 
+import ir.shop.online.Infrastructure.mapper.UserMapper;
 import ir.shop.online.application.dto.req.CreateUserRequest;
 import ir.shop.online.application.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/user")
@@ -15,10 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
+    private final UserMapper userMapper;
 
     @PostMapping("/signup")
     public ResponseEntity<?> signup(
             @RequestBody CreateUserRequest request) {
-        return ResponseEntity.ok(userService.signup(request));
+        return ResponseEntity.ok(userMapper.toDTO(userService.signup(request)));
     }
+
+    @GetMapping("/{userId}")
+    public ResponseEntity<?> getUser(
+            @PathVariable Long userId) {
+        return ResponseEntity.ok(userMapper.toDTO(userService.getById(userId)));
+    }
+
 }

@@ -57,13 +57,14 @@ public class UserServiceImpl implements UserService {
                 .email(request.getEmail())
                 .mobileNumber(request.getMobile())
                 .roles(new HashSet<>(Set.of(role)))
-                //todo by hibernate spring
-                .createdAt(LocalDateTime.now())
-                .createdBy("system")
-                .isDeleted(false)
-                .version(0)
                 .build();
 
         return userRepository.save(newUser);
+    }
+
+    @Override
+    public User getById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new DomainException(ExceptionCode.USER_02));
     }
 }
