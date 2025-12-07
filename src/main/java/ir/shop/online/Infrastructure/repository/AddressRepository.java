@@ -1,8 +1,5 @@
 package ir.shop.online.Infrastructure.repository;
 
-
-
-
 import ir.shop.online.domain.model.entity.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
