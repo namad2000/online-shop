@@ -22,7 +22,7 @@ public class Category extends AuditEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    private Long id;
+    private Integer id;
 
     @NotBlank(message = "عنوان نمی‌تواند خالی باشد")
     @Size(min = 2, max = 100, message = "عنوان باید بین ۲ تا ۱۰۰ کاراکتر باشد")

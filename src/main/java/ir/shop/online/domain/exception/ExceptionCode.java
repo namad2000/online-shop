@@ -16,7 +16,9 @@ public enum ExceptionCode {
     CATEGORY_01("Category is duplicate"),
     CATEGORY_02("Category not found"),
     CATEGORY_03("Category not exist"),
-    CATEGORY_04("Only 1 Category can without parent");
+    CATEGORY_04("Only 1 Category can without parent"),
+    PRODUCT_01("Product exist in category"),
+    PRODUCT_02("Product not found");
 
     private final String description;
 

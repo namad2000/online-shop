@@ -23,7 +23,9 @@ public class CreateProductRequest {
     private Integer stock;
 
     @NotNull(message = "دسته‌بندی نمی‌تواند خالی باشد")
-    private Long categoryId;
+    private Integer categoryId;
 
     private List<String> imageUrls;
+
+    private String sku;
 }
