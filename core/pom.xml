@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ir.online-shop</groupId>
+        <artifactId>online-shop</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>core</artifactId>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>core-application</module>
+        <module>core-infrastructure</module>
+        <module>core-presentation</module>
+        <module>core-container</module>
+        <module>core-domain</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>ir.online-shop</groupId>
+                <artifactId>core-domain</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ir.online-shop</groupId>
+                <artifactId>core-application</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

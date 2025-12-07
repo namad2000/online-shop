@@ -1,0 +1,39 @@
+package ir.shop.online.core.domain.model;
+
+import ir.shop.online.commons.domain.model.Version;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
+
+import java.util.HashSet;
+import java.util.Set;
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
+public class Category extends Version<Integer> {
+
+    @NotBlank(message = "عنوان نمی‌تواند خالی باشد")
+    @Size(min = 2, max = 100, message = "عنوان باید بین ۲ تا ۱۰۰ کاراکتر باشد")
+    @Column(nullable = false)
+    private String title;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    @Column(nullable = false)
+    private Integer level;
+
+    // رابطه والد-فرزند برای ساختار درختی
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private Category parent;
+
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private Set<Category> children = new HashSet<>();
+}
