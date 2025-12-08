@@ -1,6 +1,6 @@
-package ir.shop.online.commons.domain.annotation.validation.validator;
+package ir.shop.online.commons.domain.validation.validator;
 
-import ir.shop.online.commons.domain.annotation.validation.NotEmpty;
+import ir.shop.online.commons.domain.validation.NotEmpty;
 import ir.shop.online.commons.domain.exception.DomainValidationException;
 
 public class NotEmptyValidator implements AnnotationValidator<String, NotEmpty> {

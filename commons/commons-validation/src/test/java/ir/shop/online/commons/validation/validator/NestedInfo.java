@@ -1,6 +1,6 @@
 package ir.shop.online.commons.validation.validator;
 
-import ir.shop.online.commons.domain.annotation.validation.NotEmpty;
+import ir.shop.online.commons.domain.validation.NotEmpty;
 
 public class NestedInfo {
     @NotEmpty

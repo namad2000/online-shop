@@ -1,6 +1,6 @@
-package ir.shop.online.commons.domain.annotation.validation;
+package ir.shop.online.commons.domain.validation;
 
-import ir.shop.online.commons.domain.annotation.validation.validator.NotEmptyValidator;
+import ir.shop.online.commons.domain.validation.validator.NotEmptyValidator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,8 +1,8 @@
 package ir.shop.online.commons.validation;
 
-import ir.shop.online.commons.domain.annotation.validation.IsValid;
-import ir.shop.online.commons.domain.annotation.validation.ValidatedBy;
-import ir.shop.online.commons.domain.annotation.validation.validator.AnnotationValidator;
+import ir.shop.online.commons.domain.validation.IsValid;
+import ir.shop.online.commons.domain.validation.ValidatedBy;
+import ir.shop.online.commons.domain.validation.validator.AnnotationValidator;
 import lombok.SneakyThrows;
 
 import java.lang.annotation.Annotation;

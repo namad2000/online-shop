@@ -1,6 +1,6 @@
 package ir.shop.online.commons.validation.aspect;
 
-import ir.shop.online.commons.domain.annotation.validation.NotEmpty;
+import ir.shop.online.commons.domain.validation.NotEmpty;
 
 /**
  * @author Davood Akbari - 1404

@@ -1,4 +1,4 @@
-package ir.shop.online.commons.domain.annotation.validation.validator;
+package ir.shop.online.commons.domain.validation.validator;
 
 import java.lang.annotation.Annotation;
 

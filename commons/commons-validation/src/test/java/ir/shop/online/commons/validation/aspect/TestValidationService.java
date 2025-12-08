@@ -1,7 +1,7 @@
 package ir.shop.online.commons.validation.aspect;
 
-import ir.shop.online.commons.domain.annotation.validation.IsValid;
-import ir.shop.online.commons.domain.annotation.validation.NotEmpty;
+import ir.shop.online.commons.domain.validation.IsValid;
+import ir.shop.online.commons.domain.validation.NotEmpty;
 import org.springframework.stereotype.Service;
 
 /**

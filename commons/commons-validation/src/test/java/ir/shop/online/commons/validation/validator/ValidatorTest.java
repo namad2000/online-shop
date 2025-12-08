@@ -1,6 +1,6 @@
 package ir.shop.online.commons.validation.validator;
 
-import ir.shop.online.commons.domain.annotation.validation.NotEmpty;
+import ir.shop.online.commons.domain.validation.NotEmpty;
 import ir.shop.online.commons.domain.exception.DomainValidationException;
 import ir.shop.online.commons.validation.Validator;
 import org.junit.jupiter.api.Assertions;

@@ -2,6 +2,8 @@ package ir.shop.online.core.application.adapter;
 
 
 import ir.shop.online.commons.domain.annotation.UseCaseService;
+import ir.shop.online.commons.domain.validation.IsValid;
+import ir.shop.online.commons.domain.validation.Max;
 import ir.shop.online.commons.domain.exception.DomainException;
 import ir.shop.online.core.domain.exception.ExceptionCode;
 import ir.shop.online.core.domain.model.User;
@@ -21,8 +23,9 @@ public class AddressServiceAdapter implements AddressUseCase {
     private final AddressRepository addressRepository;
     private final UserUseCase userUseCase;
 
+    @IsValid
     @Override
-    public Address add(@IsValid @Max(100) Long userId, @isValdid CreateAddress createAddress) {
+    public Address add(@Max(100) Long userId, @IsValid CreateAddress createAddress) {
 
         User user = userUseCase.getById(userId);
 
