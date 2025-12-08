@@ -9,6 +9,13 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
+/**
+ * @author Davood Akbari - 1404
+ * daak1365@gmail.com
+ * daak1365@yahoo.com
+ * 09125188694
+ */
+
 @Aspect
 @Component
 public class ValidationAspect {
@@ -16,7 +23,7 @@ public class ValidationAspect {
     // Before advice that runs before method execution with @IsValid annotations
     @Before("execution(* *(..)) && @annotation(ir.shop.online.commons.domain.annotation.validation.IsValid)")
     // Apply only on methods with @IsValid annotation
-    public void validateMethod(JoinPoint joinPoint) throws Exception {
+    public void validateMethod(JoinPoint joinPoint) {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
 
         // Validate method parameters
@@ -35,7 +42,7 @@ public class ValidationAspect {
     // Aspect for validating fields annotated with @IsValid
     @Before("execution(* *(..)) && @annotation(ir.shop.online.commons.domain.annotation.validation.IsValid)")
     // Apply before any method execution with @IsValid
-    public void validateFields(JoinPoint joinPoint) throws Exception {
+    public void validateFields(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
 
         // Iterate through method parameters and validate the fields of each parameter if they are annotated with @IsValid
