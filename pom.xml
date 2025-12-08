@@ -8,6 +8,7 @@
         <version>4.0.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>ir.online-shop</groupId>
     <artifactId>online-shop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -26,24 +27,10 @@
         <lombok.version>1.18.34</lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <springdoc-openapi-starter-webmvc-ui.version>3.0.0</springdoc-openapi-starter-webmvc-ui.version>
+        <spring-boot-starter-aop.version>4.0.0-M2</spring-boot-starter-aop.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -56,30 +43,6 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-
-        <!-- MapStruct Core -->
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>${mapstruct.version}</version>
-        </dependency>
-
-        <!-- MapStruct Processor (برای زمان کامپایل) -->
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-            <version>${mapstruct.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Lombok + MapStruct Binding -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok-mapstruct-binding</artifactId>
-            <version>${lombok-mapstruct-binding.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
 
         <!-- ========== TEST DEPENDENCIES ========== -->
         <dependency>
@@ -120,7 +83,30 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-aop</artifactId>
-                <version>4.0.0-M2</version>
+                <version>${spring-boot-starter-aop.version}</version>
+            </dependency>
+
+            <!-- MapStruct Core -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+            <!-- MapStruct Processor -->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- Lombok + MapStruct Binding -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-mapstruct-binding</artifactId>
+                <version>${lombok-mapstruct-binding.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <dependency>
