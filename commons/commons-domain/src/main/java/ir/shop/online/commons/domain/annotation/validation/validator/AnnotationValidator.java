@@ -1,7 +1,5 @@
 package ir.shop.online.commons.domain.annotation.validation.validator;
 
-import ir.shop.online.commons.domain.exception.DomainValidationException;
-
 import java.lang.annotation.Annotation;
 
 /**
@@ -14,6 +12,6 @@ import java.lang.annotation.Annotation;
 
 public interface AnnotationValidator<T, A extends Annotation> {
     // Validate the value based on the annotation and field name
-    void validate(T value, A annotation, String paramName) throws DomainValidationException;
+    void validate(T value, A annotation, String paramName);
 }
 

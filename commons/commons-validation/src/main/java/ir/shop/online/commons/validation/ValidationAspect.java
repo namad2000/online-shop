@@ -14,7 +14,8 @@ import java.lang.reflect.Parameter;
 public class ValidationAspect {
 
     // Before advice that runs before method execution with @IsValid annotations
-    @Before("execution(* *(..)) && @annotation(ir.shop.online.commons.domain.annotation.validation.IsValid)")  // Apply only on methods with @IsValid annotation
+    @Before("execution(* *(..)) && @annotation(ir.shop.online.commons.domain.annotation.validation.IsValid)")
+    // Apply only on methods with @IsValid annotation
     public void validateMethod(JoinPoint joinPoint) throws Exception {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
 
@@ -32,7 +33,8 @@ public class ValidationAspect {
     }
 
     // Aspect for validating fields annotated with @IsValid
-    @Before("execution(* *(..)) && @annotation(ir.shop.online.commons.domain.annotation.validation.IsValid)")  // Apply before any method execution with @IsValid
+    @Before("execution(* *(..)) && @annotation(ir.shop.online.commons.domain.annotation.validation.IsValid)")
+    // Apply before any method execution with @IsValid
     public void validateFields(JoinPoint joinPoint) throws Exception {
         Object[] args = joinPoint.getArgs();
 

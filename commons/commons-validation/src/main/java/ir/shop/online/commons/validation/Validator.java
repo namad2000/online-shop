@@ -3,6 +3,7 @@ package ir.shop.online.commons.validation;
 import ir.shop.online.commons.domain.annotation.validation.IsValid;
 import ir.shop.online.commons.domain.annotation.validation.ValidatedBy;
 import ir.shop.online.commons.domain.annotation.validation.validator.AnnotationValidator;
+import lombok.SneakyThrows;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -11,6 +12,7 @@ import java.lang.reflect.Parameter;
 public class Validator {
 
     // Validate the fields of an object
+    @SneakyThrows
     @SuppressWarnings("unchecked")
     public static <T> void validate(T object) {
         if (object == null) return;
@@ -21,32 +23,28 @@ public class Validator {
         // Iterate over all fields in the class
         for (Field field : clazz.getDeclaredFields()) {
             field.setAccessible(true);
-            try {
-                Object value = field.get(object);
-                String fieldName = field.getName();  // Get the field name
+            Object value = field.get(object);
+            String fieldName = field.getName();  // Get the field name
 
-                // Check annotations on the field
-                for (Annotation ann : field.getAnnotations()) {
-                    ValidatedBy vb = ann.annotationType().getAnnotation(ValidatedBy.class);
-                    if (vb != null) {
-                        AnnotationValidator validator = vb.value().getDeclaredConstructor().newInstance();
-                        // Pass the field name to the validator
-                        validator.validate(value, ann, fieldName);
-                    }
+            // Check annotations on the field
+            for (Annotation ann : field.getAnnotations()) {
+                ValidatedBy vb = ann.annotationType().getAnnotation(ValidatedBy.class);
+                if (vb != null) {
+                    AnnotationValidator validator = vb.value().getDeclaredConstructor().newInstance();
+                    // Pass the field name to the validator
+                    validator.validate(value, ann, fieldName);
                 }
+            }
 
-                // Recursively validate if the field is annotated with @IsValid
-                if (field.isAnnotationPresent(IsValid.class)) {
-                    validate(value);
-                }
-
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            // Recursively validate if the field is annotated with @IsValid
+            if (field.isAnnotationPresent(IsValid.class)) {
+                validate(value);
             }
         }
     }
 
     // Validate method parameters
+    @SneakyThrows
     @SuppressWarnings("unchecked")
     public static <T> void validateMethodParams(Object[] args, Parameter[] params) {
         for (int i = 0; i < args.length; i++) {
@@ -57,14 +55,10 @@ public class Validator {
             for (Annotation ann : param.getAnnotations()) {
                 ValidatedBy vb = ann.annotationType().getAnnotation(ValidatedBy.class);
                 if (vb != null) {
-                    try {
-                        AnnotationValidator validator = vb.value().getDeclaredConstructor().newInstance();
-                        // Pass the parameter name to the validator
-                        String paramName = param.getName();
-                        validator.validate(arg, ann, paramName);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
+                    AnnotationValidator validator = vb.value().getDeclaredConstructor().newInstance();
+                    // Pass the parameter name to the validator
+                    String paramName = param.getName();
+                    validator.validate(arg, ann, paramName);
                 }
             }
 
