@@ -1,12 +1,14 @@
 package ir.shop.online.core.application.adapter;
 
-import ir.shop.online.Infrastructure.repository.RoleRepository;
+
 import ir.shop.online.commons.domain.annotation.UseCaseService;
+import ir.shop.online.commons.domain.exception.DomainBusinessException;
+import ir.shop.online.core.domain.model.role.Role;
+import ir.shop.online.core.domain.repository.jpa.RoleRepository;
 import ir.shop.online.core.domain.usecase.RoleUseCase;
-import ir.shop.online.domain.exception.DomainException;
-import ir.shop.online.domain.exception.ExceptionCode;
-import ir.shop.online.domain.model.entity.Role;
 import lombok.RequiredArgsConstructor;
+
+import static ir.shop.online.core.domain.exception.ExceptionCode.ROLE_01;
 
 @UseCaseService
 @RequiredArgsConstructor
@@ -17,6 +19,6 @@ public class RoleUseCaseAdapter implements RoleUseCase {
     @Override
     public Role getByName(String name) {
         return roleRepository.findByName(name)
-                .orElseThrow(() -> new DomainException(ExceptionCode.ROLE_01));
+                .orElseThrow(() -> new DomainBusinessException(ROLE_01.name()));
     }
 }
