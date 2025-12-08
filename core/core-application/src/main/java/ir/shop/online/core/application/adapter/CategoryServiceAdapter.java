@@ -1,12 +1,12 @@
 package ir.shop.online.core.application.adapter;
 
-import ir.shop.online.Infrastructure.repository.CategoryRepository;
-import ir.shop.online.application.dto.req.CreateCategoryRequest;
 import ir.shop.online.commons.domain.annotation.UseCaseService;
+import ir.shop.online.commons.domain.exception.DomainException;
+import ir.shop.online.core.domain.exception.ExceptionCode;
+import ir.shop.online.core.domain.model.category.Category;
+import ir.shop.online.core.domain.model.category.CreateCategory;
+import ir.shop.online.core.domain.repository.jpa.CategoryRepository;
 import ir.shop.online.core.domain.usecase.CategoryUseCase;
-import ir.shop.online.domain.exception.DomainException;
-import ir.shop.online.domain.exception.ExceptionCode;
-import ir.shop.online.domain.model.entity.Category;
 import lombok.RequiredArgsConstructor;
 
 @UseCaseService
@@ -16,24 +16,24 @@ public class CategoryServiceAdapter implements CategoryUseCase {
     private final CategoryRepository categoryRepository;
 
     @Override
-    public Category create(CreateCategoryRequest request) {
+    public Category create(CreateCategory createCategory) {
 
         Category parentCategory = null;
 
         // اگر والد مشخص شده، باید وجود داشته باشد
-        if (request.getParentId() != null) {
-            parentCategory = categoryRepository.findById(request.getParentId())
-                    .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_03));
+        if (createCategory.getParentId() != null) {
+            parentCategory = categoryRepository.findById(createCategory.getParentId())
+                    .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_03.name()));
         } else {
             // اگر والد ندادیم ولی قبلاً دسته‌ای بدون والد وجود دارد → اجازه نداریم
             boolean rootExists = categoryRepository.existsByParentIsNull();
             if (rootExists) {
-                throw new DomainException(ExceptionCode.CATEGORY_04); // فقط یک دسته اول بدون والد
+                throw new DomainException(ExceptionCode.CATEGORY_04.name()); // فقط یک دسته اول بدون والد
             }
         }
 
         // بررسی وجود دسته با همان عنوان و والد
-        if (categoryRepository.existsByTitleAndParent(request.getTitle(), parentCategory)) {
+        if (categoryRepository.existsByTitleAndParent(createCategory.getTitle(), parentCategory)) {
             throw new DomainException(ExceptionCode.CATEGORY_01); // دسته تکراری با همان والد
         }
 
@@ -42,8 +42,8 @@ public class CategoryServiceAdapter implements CategoryUseCase {
 
         // ساخت دسته جدید
         Category newCategory = Category.builder()
-                .title(request.getTitle())
-                .description(request.getDescription())
+                .title(createCategory.getTitle())
+                .description(createCategory.getDescription())
                 .parent(parentCategory)
                 .level(level)
                 .build();

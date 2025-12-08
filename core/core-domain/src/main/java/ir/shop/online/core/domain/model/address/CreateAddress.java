@@ -1,6 +1,8 @@
 package ir.shop.online.core.domain.model.address;
 
 
+import ir.shop.online.commons.domain.validation.IsValid;
+import ir.shop.online.core.domain.model.user.User;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +21,7 @@ public class CreateAddress {
     @NotBlank(message = "آدرس نمی‌تواند خالی باشد")
     private String address;
 
-    @ISValid
+    @IsValid
     private User user;
     private String postalCode;
 

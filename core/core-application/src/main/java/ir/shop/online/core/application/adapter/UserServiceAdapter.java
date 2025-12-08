@@ -4,7 +4,7 @@ import ir.shop.online.Infrastructure.repository.UserRepository;
 import ir.shop.online.application.dto.req.CreateUserRequest;
 import ir.shop.online.application.service.RoleService;
 import ir.shop.online.commons.domain.annotation.UseCaseService;
-import ir.shop.online.core.domain.model.User;
+import ir.shop.online.core.domain.model.user.User;
 import ir.shop.online.core.domain.usecase.UserUseCase;
 import ir.shop.online.domain.exception.DomainException;
 import ir.shop.online.domain.exception.ExceptionCode;

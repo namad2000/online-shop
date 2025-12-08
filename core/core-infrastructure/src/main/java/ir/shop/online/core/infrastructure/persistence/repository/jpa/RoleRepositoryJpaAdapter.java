@@ -1,8 +1,8 @@
-package ir.shop.online.core.infrastructure.persistence.repository;
+package ir.shop.online.core.infrastructure.persistence.repository.jpa;
 
 
-import ir.shop.online.core.domain.model.Role;
-import ir.shop.online.core.domain.repository.RoleRepository;
+import ir.shop.online.core.domain.model.role.Role;
+import ir.shop.online.core.domain.repository.jpa.RoleRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

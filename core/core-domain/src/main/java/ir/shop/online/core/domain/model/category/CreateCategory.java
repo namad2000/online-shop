@@ -1,14 +1,17 @@
-package ir.shop.online.core.presentation.rest.dto.req;
+package ir.shop.online.core.domain.model.category;
 
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateCategoryRequest {
+public class CreateCategory {
 
     @NotBlank(message = "عنوان دسته‌بندی نمی‌تواند خالی باشد")
     private String title;

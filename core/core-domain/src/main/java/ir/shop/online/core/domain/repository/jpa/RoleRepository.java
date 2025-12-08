@@ -1,12 +1,11 @@
-package ir.shop.online.core.domain.repository;
+package ir.shop.online.core.domain.repository.jpa;
 
 
-import ir.shop.online.core.domain.model.Role;
+import ir.shop.online.core.domain.model.role.Role;
 
 import java.util.Optional;
 
 public interface RoleRepository {
 
     Optional<Role> findByName(String name);
-
 }

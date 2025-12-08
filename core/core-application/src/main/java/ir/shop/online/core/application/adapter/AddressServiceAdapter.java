@@ -2,14 +2,14 @@ package ir.shop.online.core.application.adapter;
 
 
 import ir.shop.online.commons.domain.annotation.UseCaseService;
+import ir.shop.online.commons.domain.exception.DomainException;
 import ir.shop.online.commons.domain.validation.IsValid;
 import ir.shop.online.commons.domain.validation.Max;
-import ir.shop.online.commons.domain.exception.DomainException;
 import ir.shop.online.core.domain.exception.ExceptionCode;
-import ir.shop.online.core.domain.model.User;
 import ir.shop.online.core.domain.model.address.Address;
 import ir.shop.online.core.domain.model.address.CreateAddress;
-import ir.shop.online.core.domain.repository.AddressRepository;
+import ir.shop.online.core.domain.model.user.User;
+import ir.shop.online.core.domain.repository.jpa.AddressRepository;
 import ir.shop.online.core.domain.usecase.AddressUseCase;
 import ir.shop.online.core.domain.usecase.UserUseCase;
 import lombok.RequiredArgsConstructor;

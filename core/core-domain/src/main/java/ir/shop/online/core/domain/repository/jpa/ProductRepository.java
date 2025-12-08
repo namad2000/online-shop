@@ -1,7 +1,7 @@
-package ir.shop.online.core.domain.repository;
+package ir.shop.online.core.domain.repository.jpa;
 
 
-import ir.shop.online.core.domain.model.Category;
+import ir.shop.online.core.domain.model.category.Category;
 
 
 public interface ProductRepository {

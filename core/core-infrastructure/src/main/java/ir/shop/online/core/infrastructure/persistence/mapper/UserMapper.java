@@ -1,6 +1,6 @@
 package ir.shop.online.core.infrastructure.persistence.mapper;
 
-import ir.shop.online.core.domain.model.User;
+import ir.shop.online.core.domain.model.user.User;
 import ir.shop.online.core.infrastructure.persistence.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,4 +1,4 @@
-package ir.shop.online.core.presentation.rest.dto.otp;
+package ir.shop.online.core.domain.model.otp;
 
 import lombok.Data;
 

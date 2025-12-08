@@ -1,6 +1,6 @@
 package ir.shop.online.core.infrastructure.persistence.mapper;
 
-import ir.shop.online.core.domain.model.Category;
+import ir.shop.online.core.domain.model.category.Category;
 import ir.shop.online.core.infrastructure.persistence.entity.CategoryEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

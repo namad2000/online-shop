@@ -1,7 +1,13 @@
-package ir.shop.online.core.presentation.rest.dto.req;
+package ir.shop.online.core.domain.model.product;
 
-import jakarta.validation.constraints.*;
-import lombok.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -9,7 +15,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateProductRequest {
+public class CreateProduct {
 
     @NotBlank(message = "عنوان محصول نمی‌تواند خالی باشد")
     private String title;

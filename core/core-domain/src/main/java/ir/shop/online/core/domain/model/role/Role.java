@@ -1,22 +1,20 @@
-package ir.shop.online.core.domain.model;
+package ir.shop.online.core.domain.model.role;
 
-import ir.shop.online.core.domain.model.product.Product;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class ProductImage {
+public class Role {
 
-    private String url;
-    private Boolean isMain;
+    private String name;
 
-    private Product product;
+    private String description;
 }

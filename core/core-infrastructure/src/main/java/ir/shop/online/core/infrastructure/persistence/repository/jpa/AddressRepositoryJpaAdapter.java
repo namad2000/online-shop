@@ -1,8 +1,8 @@
-package ir.shop.online.core.infrastructure.persistence.repository;
+package ir.shop.online.core.infrastructure.persistence.repository.jpa;
 
 import ir.shop.online.core.domain.model.address.Address;
-import ir.shop.online.core.domain.model.User;
-import ir.shop.online.core.domain.repository.AddressRepository;
+import ir.shop.online.core.domain.model.user.User;
+import ir.shop.online.core.domain.repository.jpa.AddressRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;

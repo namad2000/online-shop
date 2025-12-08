@@ -1,7 +1,7 @@
 package ir.shop.online.core.domain.model.address;
 
 import ir.shop.online.commons.domain.model.Version;
-import ir.shop.online.core.domain.model.User;
+import ir.shop.online.core.domain.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

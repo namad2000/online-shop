@@ -1,10 +1,10 @@
 package ir.shop.online.core.domain.usecase;
 
-import ir.shop.online.application.dto.req.CreateProductRequest;
-import ir.shop.online.domain.model.entity.Product;
+import ir.shop.online.core.domain.model.product.CreateProduct;
+import ir.shop.online.core.domain.model.product.Product;
 
 public interface ProductUseCase {
-    Product create(CreateProductRequest request);
+    Product create(CreateProduct createProduct);
 
     Product getById(Long productId);
 }

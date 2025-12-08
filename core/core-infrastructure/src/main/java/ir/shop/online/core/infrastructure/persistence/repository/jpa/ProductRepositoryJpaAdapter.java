@@ -1,8 +1,8 @@
-package ir.shop.online.core.infrastructure.persistence.repository;
+package ir.shop.online.core.infrastructure.persistence.repository.jpa;
 
 
-import ir.shop.online.core.domain.model.Category;
-import ir.shop.online.core.domain.repository.ProductRepository;
+import ir.shop.online.core.domain.model.category.Category;
+import ir.shop.online.core.domain.repository.jpa.ProductRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
