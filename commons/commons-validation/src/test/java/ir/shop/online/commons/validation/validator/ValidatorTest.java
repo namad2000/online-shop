@@ -27,7 +27,7 @@ public class ValidatorTest {
         );
 
         Assertions.assertEquals("username", ex.getParamName());
-        Assertions.assertEquals("MaxValidator-01", ex.getCode());
+        Assertions.assertEquals("NotEmptyValidator-01", ex.getCode());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class ValidatorTest {
         );
 
         Assertions.assertEquals("title", ex.getParamName());
-        Assertions.assertEquals("MaxValidator-01", ex.getCode());
+        Assertions.assertEquals("NotEmptyValidator-01", ex.getCode());
     }
 
     @Test
@@ -73,7 +73,7 @@ public class ValidatorTest {
         );
 
         Assertions.assertEquals("param", ex.getParamName());
-        Assertions.assertEquals("MaxValidator-01", ex.getCode());
+        Assertions.assertEquals("NotEmptyValidator-01", ex.getCode());
     }
 
     static class DummyClass {

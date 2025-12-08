@@ -10,7 +10,6 @@ import ir.shop.online.commons.domain.exception.DomainValidationException;
  * 09125188694
  */
 
-
 public class MaxValidator implements AnnotationValidator<Number, Max> {
     @Override
     public void validate(Number value, Max annotation, String paramName) {

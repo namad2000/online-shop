@@ -47,7 +47,7 @@ public class ValidationAspectTest {
         );
 
         assertEquals("name", ex.getParamName());
-        assertEquals("MaxValidator-01", ex.getCode());
+        assertEquals("NotEmptyValidator-01", ex.getCode());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class ValidationAspectTest {
         );
 
         assertEquals("title", ex.getParamName());
-        assertEquals("MaxValidator-01", ex.getCode());
+        assertEquals("NotEmptyValidator-01", ex.getCode());
     }
 
     @Test
@@ -84,6 +84,6 @@ public class ValidationAspectTest {
         );
 
         assertEquals("param", ex.getParamName());
-        assertEquals("MaxValidator-01", ex.getCode());
+        assertEquals("NotEmptyValidator-01", ex.getCode());
     }
 }
