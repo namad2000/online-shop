@@ -2,6 +2,8 @@ package ir.shop.online.core.application.adapter;
 
 
 import ir.shop.online.commons.domain.annotation.UseCaseService;
+import ir.shop.online.commons.domain.exception.DomainException;
+import ir.shop.online.core.domain.exception.ExceptionCode;
 import ir.shop.online.core.domain.model.User;
 import ir.shop.online.core.domain.model.address.Address;
 import ir.shop.online.core.domain.model.address.CreateAddress;
@@ -20,13 +22,13 @@ public class AddressServiceAdapter implements AddressUseCase {
     private final UserUseCase userUseCase;
 
     @Override
-    public Address add(Long userId, CreateAddress createAddress) {
+    public Address add(@IsValid @Max(100) Long userId, @isValdid CreateAddress createAddress) {
 
         User user = userUseCase.getById(userId);
 
         // بررسی تکراری بودن عنوان آدرس
         if (addressRepository.findByUserAndTitle(user, createAddress.getTitle()) != null) {
-            throw new DomainException(ExceptionCode.ADDRESS_01);
+            throw new DomainException(ExceptionCode.ADDRESS_01.name());
         }
 
         // حالت 1: اگر کاربر هیچ آدرس ندارد → این آدرس خودکار پیش‌فرض می‌شود

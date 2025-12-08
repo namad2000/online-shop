@@ -19,6 +19,8 @@ public class CreateAddress {
     @NotBlank(message = "آدرس نمی‌تواند خالی باشد")
     private String address;
 
+    @ISValid
+    private User user;
     private String postalCode;
 
     private Boolean isDefault = false;

@@ -9,8 +9,8 @@ import java.lang.annotation.*;
  * Package: ir.shop.online.commons.domain
  */
 
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface ValidateMethod {
+public @interface IsValid {
 }
