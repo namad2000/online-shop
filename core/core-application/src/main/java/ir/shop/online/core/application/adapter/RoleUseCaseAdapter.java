@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 @UseCaseService
 @RequiredArgsConstructor
-public class RoleServiceAdapter implements RoleUseCase {
+public class RoleUseCaseAdapter implements RoleUseCase {
 
     private final RoleRepository roleRepository;
 

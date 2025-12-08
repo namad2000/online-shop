@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 
 @UseCaseService
 @RequiredArgsConstructor
-public class CategoryServiceAdapter implements CategoryUseCase {
+public class CategoryUseCaseAdapter implements CategoryUseCase {
 
     private final CategoryRepository categoryRepository;
 

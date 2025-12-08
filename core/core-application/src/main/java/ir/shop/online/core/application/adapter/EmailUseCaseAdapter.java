@@ -4,7 +4,7 @@ import ir.shop.online.commons.domain.annotation.UseCaseService;
 import ir.shop.online.core.domain.usecase.EmailUseCase;
 
 @UseCaseService
-public class EmailServiceAdapter implements EmailUseCase {
+public class EmailUseCaseAdapter implements EmailUseCase {
 
 //    @Autowired
 //    private JavaMailSender mailSender;

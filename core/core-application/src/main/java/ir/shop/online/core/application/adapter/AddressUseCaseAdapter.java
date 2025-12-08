@@ -18,7 +18,7 @@ import java.util.List;
 
 @UseCaseService
 @RequiredArgsConstructor
-public class AddressServiceAdapter implements AddressUseCase {
+public class AddressUseCaseAdapter implements AddressUseCase {
 
     private final AddressRepository addressRepository;
     private final UserUseCase userUseCase;

@@ -16,7 +16,7 @@ import static ir.shop.online.core.domain.exception.ExceptionCode.*;
 
 @UseCaseService
 @RequiredArgsConstructor
-public class OTPAdapter implements OTPUseCase {
+public class OTPUseCaseAdapter implements OTPUseCase {
 
     @Value("${otp.expiration-time}")
     private long expirationTime;

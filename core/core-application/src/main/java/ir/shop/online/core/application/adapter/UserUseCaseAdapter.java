@@ -16,7 +16,7 @@ import java.util.Set;
 
 @UseCaseService
 @RequiredArgsConstructor
-public class UserServiceAdapter implements UserUseCase {
+public class UserUseCaseAdapter implements UserUseCase {
 
     private final UserRepository userRepository;
     private final RoleService roleService;

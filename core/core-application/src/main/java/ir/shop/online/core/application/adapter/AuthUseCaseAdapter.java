@@ -9,7 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 @UseCaseService
 @RequiredArgsConstructor
-public class AuthServiceAdapter implements AuthUseCase {
+public class AuthUseCaseAdapter implements AuthUseCase {
 
     private final OTPUseCase otpUseCase;
 
