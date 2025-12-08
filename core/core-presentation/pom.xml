@@ -31,5 +31,10 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok-mapstruct-binding</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>ir.online-shop</groupId>
+            <artifactId>core-domain</artifactId>
+        </dependency>
     </dependencies>
 </project>
