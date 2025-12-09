@@ -19,6 +19,7 @@
     <modules>
         <module>commons</module>
         <module>core</module>
+        <module>commons/commons-property</module>
     </modules>
 
     <properties>
