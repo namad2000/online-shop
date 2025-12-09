@@ -1,20 +1,16 @@
 package ir.shop.online.core.infrastructure.persistence.repository.jpa;
 
+import ir.shop.online.commons.infrastructure.repository.JpaRepository;
 import ir.shop.online.core.domain.model.address.Address;
 import ir.shop.online.core.domain.model.user.User;
 import ir.shop.online.core.domain.repository.jpa.AddressRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class AddressRepositoryJpaAdapter implements AddressRepository {
-
-    @PersistenceContext
-    private EntityManager em;
+public class AddressRepositoryJpaAdapter extends JpaRepository<Address, Long> implements AddressRepository {
 
     @Override
     public List<Address> findByUserId(Long userId) {

@@ -1,6 +1,7 @@
 package ir.shop.online.core.infrastructure.persistence.repository.jpa;
 
 
+import ir.shop.online.commons.infrastructure.repository.JpaRepository;
 import ir.shop.online.core.domain.model.user.User;
 import ir.shop.online.core.domain.repository.jpa.UserRepository;
 import org.springframework.stereotype.Repository;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class UserRepositoryJpaAdapter implements UserRepository {
+public class UserRepositoryJpaAdapter extends JpaRepository<User, Long> implements UserRepository {
 
     @Override
     public Optional<User> findByMobileNumber(String mobileNumber) {
