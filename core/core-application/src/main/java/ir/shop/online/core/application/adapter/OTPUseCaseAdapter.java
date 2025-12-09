@@ -2,12 +2,12 @@ package ir.shop.online.core.application.adapter;
 
 import ir.shop.online.commons.domain.annotation.UseCaseService;
 import ir.shop.online.commons.domain.exception.DomainException;
+import ir.shop.online.commons.domain.property.Property;
 import ir.shop.online.core.domain.model.otp.OTP;
 import ir.shop.online.core.domain.model.otp.OTPType;
 import ir.shop.online.core.domain.repository.memory.OtpRepository;
 import ir.shop.online.core.domain.usecase.OTPUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
@@ -18,14 +18,14 @@ import static ir.shop.online.core.domain.exception.ExceptionCode.*;
 @RequiredArgsConstructor
 public class OTPUseCaseAdapter implements OTPUseCase {
 
-    @Value("${otp.expiration-time}")
+    @Property(key = "otp.expiration-time", defaultValue = "3000")
     private long expirationTime;
 
-    @Value("${otp.max-attempts}")
-    private int maxAttempts;
+    @Property(key = "otp.max-attempts", defaultValue = "10")
+    private int maxAttempts; //TODO: بیزنس تعداد تلاش های ناموفق نوشته شود
 
-    @Value("${otp.resend-cooldown}")
-    private long resendCooldown;
+    @Property(key = "otp.resend-cooldown", defaultValue = "3000")
+    private long resendCooldown;//TODO: بیزنس تعداد تلاش های ناموفق نوشته شود
 
     private final OtpRepository otpRepository;
 
