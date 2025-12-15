@@ -1,7 +1,7 @@
 package ir.shop.online.core.presentation.rest;
 
-import ir.shop.online.application.dto.req.CreateCategoryRequest;
-import ir.shop.online.application.service.CategoryService;
+
+import ir.shop.online.core.domain.usecase.CategoryUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CategoryController {
 
-    private final CategoryService categoryService;
-    private final ir.shop.online.infrastructure.mapper.CategoryMapper categoryMapper;
+    private final CategoryUseCase categoryService;
+//    private final CategoryMapper categoryMapper;
 
     @PostMapping("/create")
     public ResponseEntity<?> create(

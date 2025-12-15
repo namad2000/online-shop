@@ -1,9 +1,10 @@
 package ir.shop.online.core.domain.model.category;
 
 import ir.shop.online.commons.domain.model.Version;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.util.HashSet;
@@ -17,17 +18,13 @@ import java.util.Set;
 @SuperBuilder
 public class Category extends Version<Integer> {
 
-    @NotBlank(message = "عنوان نمی‌تواند خالی باشد")
-    @Size(min = 2, max = 100, message = "عنوان باید بین ۲ تا ۱۰۰ کاراکتر باشد")
     private String title;
 
     private String description;
-
 
     private Integer level;
 
     private Category parent;
 
-    @Builder.Default
     private Set<Category> children = new HashSet<>();
 }

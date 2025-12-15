@@ -1,5 +1,6 @@
 package ir.shop.online.commons.domain.model;
 
+import ir.shop.online.commons.domain.validation.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,10 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 public class Version<ID> {
+
+    @NotNull
     protected ID id;
+
+    @NotNull
     protected Integer version;
 }

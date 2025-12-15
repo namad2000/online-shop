@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
-import java.util.Random;
 
 @Data
 @NoArgsConstructor
@@ -15,11 +14,7 @@ import java.util.Random;
 @SuperBuilder
 public class OTP {
 
-    @Builder.Default
-    private Random random = new Random();
-
-    @Builder.Default
-    private String code = String.format("%06d", random.nextInt(999999));
+    private String code;
     private String identifier; // ایمیل یا شماره موبایل
     private OTPType type;
 

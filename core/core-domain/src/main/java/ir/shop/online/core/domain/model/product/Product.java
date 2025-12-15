@@ -1,6 +1,8 @@
 package ir.shop.online.core.domain.model.product;
 
 
+import ir.shop.online.commons.domain.validation.NotEmpty;
+import ir.shop.online.commons.domain.validation.NotNull;
 import ir.shop.online.core.domain.model.ProductImage;
 import ir.shop.online.core.domain.model.category.Category;
 import lombok.*;
@@ -16,16 +18,22 @@ import java.util.Set;
 @AllArgsConstructor
 @SuperBuilder
 public class Product {
+
+    @NotEmpty
     private String name;
 
     private String description;
 
+    @NotNull
     private BigDecimal price;
 
+    @NotNull
     private Integer stockQuantity;
 
+    @NotEmpty
     private String sku; // شناسه محصول
 
+    @NotEmpty
     private Category category;
 
     @Builder.Default

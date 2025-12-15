@@ -1,6 +1,6 @@
 package ir.shop.online.core.infrastructure.config;
 
-import ir.shop.online.application.dto.otp.OTP;
+import ir.shop.online.core.domain.model.otp.OTP;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -13,7 +13,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisConfig {
 
     @Bean
-    public RedisTemplate<String, OTP> redisTemplate(RedisConnectionFactory connectionFactory) {
+    public RedisTemplate<String, ir.shop.online.core.domain.model.otp.OTP> redisTemplate(RedisConnectionFactory connectionFactory) {
         RedisTemplate<String, OTP> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
 

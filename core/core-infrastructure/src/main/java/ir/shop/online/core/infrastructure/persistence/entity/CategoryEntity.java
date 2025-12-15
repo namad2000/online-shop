@@ -1,6 +1,6 @@
 package ir.shop.online.core.infrastructure.persistence.entity;
 
-import ir.shop.online.commons.infrastructure.entity.AuditEntity;
+import ir.shop.online.commons.infrastructure.persistence.entity.ActiveDeleteAuditingEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -17,7 +17,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class CategoryEntity extends AuditEntity {
+public class CategoryEntity extends ActiveDeleteAuditingEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

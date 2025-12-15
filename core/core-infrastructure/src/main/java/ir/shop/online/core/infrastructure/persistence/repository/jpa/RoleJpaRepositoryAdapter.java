@@ -1,7 +1,6 @@
 package ir.shop.online.core.infrastructure.persistence.repository.jpa;
 
 
-import ir.shop.online.commons.infrastructure.repository.JpaRepository;
 import ir.shop.online.core.domain.model.role.Role;
 import ir.shop.online.core.domain.repository.jpa.RoleRepository;
 import org.springframework.stereotype.Repository;
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class RoleRepositoryJpaAdapter extends JpaRepository<Role, Integer> implements RoleRepository {
+public class RoleJpaRepositoryAdapter implements RoleRepository {
 
     @Override
     public Optional<Role> findByName(String name) {

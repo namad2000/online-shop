@@ -10,6 +10,7 @@ import ir.shop.online.core.domain.usecase.OTPUseCase;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import static ir.shop.online.core.domain.exception.ExceptionCode.*;
@@ -40,15 +41,7 @@ public class OTPUseCaseAdapter implements OTPUseCase {
         // Delete previous OTP if it exists
         otpRepository.deleteByIdentifier(identifier);
 
-        LocalDateTime now = LocalDateTime.now();
-        OTP otp = OTP.builder()
-                .identifier(identifier)
-                .createdAt(now)
-                .expiresAt(now.plusSeconds(expirationTime))
-                .type(type)
-                .build();
-
-
+        OTP otp = generateOtp(identifier, type);
         otpRepository.saveByIdentifier(identifier, otp, expirationTime, TimeUnit.SECONDS);
         otpRepository.saveCooldown(identifier, otp, resendCooldown, TimeUnit.SECONDS);
 
@@ -87,13 +80,13 @@ public class OTPUseCaseAdapter implements OTPUseCase {
         }
     }
 
-    // بررسی وجود OTP
+    // Check for the existence of OTP
     @Override
     public OTP getOTP(String identifier) {
         return otpRepository.findByIdentifier(identifier);
     }
 
-    // حذف OTP
+    // Delete OTP
     @Override
     public void deleteOTP(String identifier) {
         otpRepository.deleteByIdentifier(identifier);
@@ -108,5 +101,18 @@ public class OTPUseCaseAdapter implements OTPUseCase {
         if (ttl > 0) {
             otpRepository.saveByIdentifier(identifier, otp, ttl, TimeUnit.SECONDS);
         }
+    }
+
+    private OTP generateOtp(String identifier, OTPType type) {
+        Random random = new Random();
+        String code = String.format("%06d", random.nextInt(999999));
+        LocalDateTime now = LocalDateTime.now();
+        return OTP.builder()
+                .identifier(identifier)
+                .code(code)
+                .createdAt(now)
+                .expiresAt(now.plusSeconds(expirationTime))
+                .type(type)
+                .build();
     }
 }
