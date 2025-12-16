@@ -6,7 +6,7 @@ import ir.shop.online.core.domain.repository.jpa.ProductRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class ProductJpaRepositoryAdapter implements ProductRepository {
+public class ProductRepositoryAdapter implements ProductRepository {
     @Override
     public boolean existsByNameAndCategory(String title, Category category) {
         return false;

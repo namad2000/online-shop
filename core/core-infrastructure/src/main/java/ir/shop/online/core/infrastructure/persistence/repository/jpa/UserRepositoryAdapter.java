@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class UserJpaRepositoryAdapter implements UserRepository {
+public class UserRepositoryAdapter implements UserRepository {
 
     @Override
     public Optional<User> findByMobileNumber(String mobileNumber) {

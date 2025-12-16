@@ -9,10 +9,10 @@ import java.util.Optional;
  * Package: ir.shop.online.commons.domain.repository
  */
 
-public interface JpaRepository<D, ID> {
-    void save(D domain);
-
-    D update(D domain);
+public interface DomainRepository<D, ID> {
+    D save(D domain);
 
     Optional<D> findById(ID id);
+
+    Boolean existById(ID id);
 }

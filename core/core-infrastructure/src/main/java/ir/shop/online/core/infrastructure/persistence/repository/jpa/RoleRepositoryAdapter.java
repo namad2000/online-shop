@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class RoleJpaRepositoryAdapter implements RoleRepository {
+public class RoleRepositoryAdapter implements RoleRepository {
 
     @Override
     public Optional<Role> findByName(String name) {
