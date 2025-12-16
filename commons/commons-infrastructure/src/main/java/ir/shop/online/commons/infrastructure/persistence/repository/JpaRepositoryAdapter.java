@@ -1,9 +1,12 @@
 package ir.shop.online.commons.infrastructure.persistence.repository;
 
 import ir.shop.online.commons.domain.repository.JpaRepository;
-import ir.shop.online.commons.infrastructure.persistence.mapper.InfraMapper;
+import ir.shop.online.commons.infrastructure.persistence.mapper.CommonsInfrastructureMapper;
+import ir.shop.online.commons.util.card.reflection.TypeReference;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import java.util.Optional;
 
@@ -14,14 +17,17 @@ import java.util.Optional;
  * Package: ir.shop.online.commons.infrastructure.repository
  */
 
-public abstract class JpaRepositoryAdapter<D, E, ID> implements JpaRepository<D, ID> {
+public abstract class JpaRepositoryAdapter<D, E, ID, M extends CommonsInfrastructureMapper<D, E>> implements JpaRepository<D, ID>, TypeReference {
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @PersistenceContext
     protected EntityManager em;
 
-    protected abstract InfraMapper<D, E> mapper();
-
-    protected abstract Class<E> clazz();
+    protected CommonsInfrastructureMapper<D, E> mapper() {
+        return applicationContext.getBean(this.genericClass(3));
+    }
 
     @Override
     public void save(D domain) {
@@ -36,7 +42,7 @@ public abstract class JpaRepositoryAdapter<D, E, ID> implements JpaRepository<D,
 
     @Override
     public Optional<D> findById(ID id) {
-        E entity = em.find(clazz(), id);
+        E entity = em.find(this.genericClass(1), id);
         return Optional.of(mapper().toDomain(entity));
     }
 }

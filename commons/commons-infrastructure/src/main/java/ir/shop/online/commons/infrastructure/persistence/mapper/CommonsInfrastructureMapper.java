@@ -7,7 +7,7 @@ package ir.shop.online.commons.infrastructure.persistence.mapper;
  * Package: ir.shop.online.commons.infrastructure.persistence.mapper
  */
 
-public interface InfraMapper<D, E> {
+public interface CommonsInfrastructureMapper<D, E> {
 
     D toDomain(E e);
 

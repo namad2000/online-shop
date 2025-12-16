@@ -3,7 +3,10 @@ package ir.shop.online.core.domain.model.category;
 
 import ir.shop.online.commons.domain.model.Version;
 import ir.shop.online.commons.domain.validation.NotEmpty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 
