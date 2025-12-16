@@ -1,8 +1,9 @@
 package ir.shop.online.core.presentation.rest;
 
-import ir.shop.online.application.dto.otp.OTPType;
-import ir.shop.online.application.dto.otp.VerifyOTPRequest;
-import ir.shop.online.application.service.OTPService;
+
+import ir.shop.online.core.domain.model.otp.OTPType;
+import ir.shop.online.core.domain.model.otp.VerifyOTPRequest;
+import ir.shop.online.core.domain.usecase.OTPUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,14 +15,14 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class OTPController {
 
-    private final OTPService otpService;
+    private final OTPUseCase otpUseCase;
 
     @PostMapping("/generate")
     public ResponseEntity<?> generateOTP(
             @RequestParam String identifier,
             @RequestParam OTPType type) {
         try {
-            String code = otpService.generateOTP(identifier, type);
+            String code = otpUseCase.generateOTP(identifier, type);
             // TODO: ارسال کد از طریق ایمیل یا SMS
             // emailService.sendOTP(identifier, code);
 

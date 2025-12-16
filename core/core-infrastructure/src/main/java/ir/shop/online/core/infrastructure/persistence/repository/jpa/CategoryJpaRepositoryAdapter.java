@@ -25,6 +25,11 @@ public class CategoryJpaRepositoryAdapter extends JpaRepositoryAdapter<Category,
     }
 
     @Override
+    protected Class<CategoryEntity> clazz() {
+        return CategoryEntity.class;
+    }
+
+    @Override
     public Optional<Category> findById(Integer id) {
         return Optional.empty();
     }
