@@ -21,18 +21,37 @@
         <module>core-domain</module>
     </modules>
 
+    <properties>
+        <core-domain.version>0.0.1-SNAPSHOT</core-domain.version>
+        <core-application.version>0.0.1-SNAPSHOT</core-application.version>
+        <core-infrastructure.version>0.0.1-SNAPSHOT</core-infrastructure.version>
+        <core-presentation.version>0.0.1-SNAPSHOT</core-presentation.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>ir.online-shop</groupId>
                 <artifactId>core-domain</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${core-domain.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>ir.online-shop</groupId>
                 <artifactId>core-application</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${core-application.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ir.online-shop</groupId>
+                <artifactId>core-infrastructure</artifactId>
+                <version>${core-infrastructure.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ir.online-shop</groupId>
+                <artifactId>core-presentation</artifactId>
+                <version>${core-presentation.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -60,22 +60,22 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
                 .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_02.name()));
 
 
-        Category.builder()
-                .id(updateCategory.getId())
-                .title(updateCategory.getTitle())
-                .description(updateCategory.getDescription())
-                .parent(updateCategory.)
-                .level(level)
-                .build();
-
-        return categoryRepository.save(newCategory);
+//        Category.builder()
+//                .id(updateCategory.getId())
+//                .title(updateCategory.getTitle())
+//                .description(updateCategory.getDescription())
+//                .parent(updateCategory.)
+//                .level(level)
+//                .build();
+//
+//        return categoryRepository.save(newCategory);
+        return null;
     }
 
     @Override
     public Category getById(Integer categoryId) {
-//        return categoryRepository.findById(categoryId)
-//                .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_02.name()));
-        return null;
+        return categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_02.name()));
     }
 
     private static Category buildCategory(CreateCategory createCategory, Category parentCategory, int level) {

@@ -9,7 +9,7 @@
 //import org.springframework.web.bind.annotation.*;
 //
 //@RestController
-//@RequestMapping("/api/address")
+//@RequestMapping("/address")
 //@RequiredArgsConstructor
 //public class AddressController {
 //

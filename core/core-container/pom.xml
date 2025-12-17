@@ -15,7 +15,12 @@
     <dependencies>
         <dependency>
             <groupId>ir.online-shop</groupId>
-            <artifactId>commons-validation</artifactId>
+            <artifactId>core-infrastructure</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ir.online-shop</groupId>
+            <artifactId>core-presentation</artifactId>
         </dependency>
     </dependencies>
 

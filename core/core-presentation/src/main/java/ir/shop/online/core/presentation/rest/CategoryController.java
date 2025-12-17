@@ -1,18 +1,20 @@
 package ir.shop.online.core.presentation.rest;
 
 
+import ir.shop.online.core.domain.model.category.Category;
 import ir.shop.online.core.domain.usecase.CategoryUseCase;
-import ir.shop.online.core.presentation.rest.dto.req.category.CreateCategoryRequestDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/category")
+@RequestMapping("/category")
 @RequiredArgsConstructor
 public class CategoryController {
 
-    private final CategoryUseCase categoryService;
+    private final CategoryUseCase categoryUseCase;
 //    private final CategoryMapper categoryMapper;
 
 //    @PostMapping("/create")
@@ -27,4 +29,8 @@ public class CategoryController {
 //        return ResponseEntity.ok(categoryMapper.toDTO(categoryService.getById(categoryId)));
 //    }
 
+    @GetMapping("{id}")
+    public Category getById(@PathVariable("id") Integer id) {
+        return categoryUseCase.getById(id);
+    }
 }
