@@ -7,19 +7,20 @@
         <groupId>ir.online-shop</groupId>
         <artifactId>online-shop</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>commons</artifactId>
+    <artifactId>commons-presentation</artifactId>
 
-    <packaging>pom</packaging>
-    <modules>
-        <module>commons-domain</module>
-        <module>commons-infrastructure</module>
-        <module>commons-presentation</module>
-        <module>commons-util</module>
-        <module>commons-validation</module>
-        <module>commons-api-doc</module>
-        <module>commons-property-config</module>
-        <module>commons-property</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ir.online-shop</groupId>
+            <artifactId>commons-domain</artifactId>
+        </dependency>
+    </dependencies>
 </project>

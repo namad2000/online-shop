@@ -13,11 +13,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webmvc</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
         </dependency>
@@ -40,6 +35,11 @@
         <dependency>
             <groupId>ir.online-shop</groupId>
             <artifactId>core-application</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ir.online-shop</groupId>
+            <artifactId>commons-presentation</artifactId>
         </dependency>
     </dependencies>
 </project>

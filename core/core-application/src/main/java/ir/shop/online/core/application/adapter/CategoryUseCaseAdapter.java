@@ -4,6 +4,7 @@ import ir.shop.online.commons.domain.annotation.UseCaseService;
 import ir.shop.online.commons.domain.exception.DomainException;
 import ir.shop.online.commons.domain.property.Property;
 import ir.shop.online.commons.domain.validation.IsValid;
+import ir.shop.online.commons.domain.validation.Max;
 import ir.shop.online.core.domain.exception.ExceptionCode;
 import ir.shop.online.core.domain.model.category.Category;
 import ir.shop.online.core.domain.model.category.CreateCategory;
@@ -75,8 +76,9 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
         return null;
     }
 
+    @IsValid
     @Override
-    public Category getById(Integer categoryId) {
+    public Category getById(@Max(3) Integer categoryId) {
 //        return categoryRepository.findById(categoryId)
 //                .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_02.name()));
 

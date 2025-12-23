@@ -19,8 +19,6 @@
     <modules>
         <module>commons</module>
         <module>core</module>
-        <module>commons/commons-property</module>
-        <module>commons/commons-container</module>
     </modules>
 
     <properties>
@@ -112,6 +110,12 @@
             <dependency>
                 <groupId>ir.online-shop</groupId>
                 <artifactId>commons-infrastructure</artifactId>
+                <version>${commons.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ir.online-shop</groupId>
+                <artifactId>commons-presentation</artifactId>
                 <version>${commons.version}</version>
             </dependency>
         </dependencies>
