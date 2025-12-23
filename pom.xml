@@ -87,6 +87,12 @@
 
             <dependency>
                 <groupId>ir.online-shop</groupId>
+                <artifactId>commons-property</artifactId>
+                <version>${commons.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ir.online-shop</groupId>
                 <artifactId>commons-util</artifactId>
                 <version>${commons.version}</version>
             </dependency>

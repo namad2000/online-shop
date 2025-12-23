@@ -2,6 +2,7 @@ package ir.shop.online.core.application.adapter;
 
 import ir.shop.online.commons.domain.annotation.UseCaseService;
 import ir.shop.online.commons.domain.exception.DomainException;
+import ir.shop.online.commons.domain.property.Property;
 import ir.shop.online.commons.domain.validation.IsValid;
 import ir.shop.online.core.domain.exception.ExceptionCode;
 import ir.shop.online.core.domain.model.category.Category;
@@ -18,6 +19,8 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
 
     private final CategoryRepository categoryRepository;
 
+    @Property(key = "test", defaultValue = "3000")
+    private int test;
 
     @IsValid
     @Override
@@ -74,8 +77,13 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
 
     @Override
     public Category getById(Integer categoryId) {
-        return categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_02.name()));
+//        return categoryRepository.findById(categoryId)
+//                .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_02.name()));
+
+        Category category = new Category();
+        category.setId(test);
+
+        return category;
     }
 
     private static Category buildCategory(CreateCategory createCategory, Category parentCategory, int level) {
