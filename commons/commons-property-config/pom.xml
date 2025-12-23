@@ -5,27 +5,22 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>ir.online-shop</groupId>
-        <artifactId>commons-container</artifactId>
+        <artifactId>commons</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../commons/commons-container</relativePath>
     </parent>
 
-    <artifactId>core-container</artifactId>
-    <properties>
-        <core.version>0.0.1-SNAPSHOT</core.version>
-    </properties>
+    <artifactId>commons-property-config</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>ir.online-shop</groupId>
-            <artifactId>core-infrastructure</artifactId>
-            <version>${core.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>ir.online-shop</groupId>
-            <artifactId>core-presentation</artifactId>
-            <version>${core.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 </project>

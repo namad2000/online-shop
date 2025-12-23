@@ -16,11 +16,11 @@ public class RedisConfig {
         RedisTemplate<String, OTP> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
 
-        // Serializer برای کلیدها
+        // Serializer for keys
         template.setKeySerializer(new StringRedisSerializer());
         template.setHashKeySerializer(new StringRedisSerializer());
 
-        // Serializer برای مقادیر (JDK Serialization)
+        // Serializer for values (JDK Serialization)
         template.setValueSerializer(new JdkSerializationRedisSerializer());
         template.setHashValueSerializer(new JdkSerializationRedisSerializer());
 

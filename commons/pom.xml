@@ -17,6 +17,7 @@
         <module>commons-util</module>
         <module>commons-domain</module>
         <module>commons-validation</module>
+        <module>commons-api-doc</module>
+        <module>commons-property-config</module>
     </modules>
-
 </project>

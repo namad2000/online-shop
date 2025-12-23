@@ -20,6 +20,7 @@
         <module>commons</module>
         <module>core</module>
         <module>commons/commons-property</module>
+        <module>commons/commons-container</module>
     </modules>
 
     <properties>
@@ -29,6 +30,7 @@
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <springdoc-openapi-starter-webmvc-ui.version>3.0.0</springdoc-openapi-starter-webmvc-ui.version>
         <spring-boot-starter-aop.version>4.0.0-M2</spring-boot-starter-aop.version>
+        <commons.version>0.0.1-SNAPSHOT</commons.version>
     </properties>
 
     <dependencies>
@@ -79,26 +81,32 @@
 
             <dependency>
                 <groupId>ir.online-shop</groupId>
+                <artifactId>commons-property-config</artifactId>
+                <version>${commons.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ir.online-shop</groupId>
                 <artifactId>commons-util</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${commons.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>ir.online-shop</groupId>
                 <artifactId>commons-domain</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${commons.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>ir.online-shop</groupId>
                 <artifactId>commons-validation</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${commons.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>ir.online-shop</groupId>
                 <artifactId>commons-infrastructure</artifactId>
-                <version>0.0.1-SNAPSHOT</version>
+                <version>${commons.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -112,19 +120,19 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <annotationProcessorPaths>
-                        <!-- Lombok باید اول باشد -->
+                        <!-- Lombok must come first -->
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
                         </path>
-                        <!-- سپس Lombok MapStruct Binding -->
+                        <!-- Then Lombok MapStruct Binding -->
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok-mapstruct-binding</artifactId>
                             <version>${lombok-mapstruct-binding.version}</version>
                         </path>
-                        <!-- در آخر MapStruct -->
+                        <!-- Finally MapStruct -->
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>

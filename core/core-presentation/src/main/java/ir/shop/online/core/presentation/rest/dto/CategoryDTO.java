@@ -1,6 +1,5 @@
 package ir.shop.online.core.presentation.rest.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +13,6 @@ public class CategoryDTO {
 
     private Long id;
 
-    @NotBlank(message = "عنوان دسته‌بندی نمی‌تواند خالی باشد")
     private String title;
 
     private String description;

@@ -1,7 +1,5 @@
 package ir.shop.online.core.presentation.rest.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,20 +16,16 @@ public class OrderDTO {
 
     private Long id;
 
-    @NotBlank(message = "نام نمی‌تواند خالی باشد")
     private String customerFirstName;
 
-    @NotBlank(message = "نام خانوادگی نمی‌تواند خالی باشد")
     private String customerLastName;
 
-    @Pattern(regexp = "^09[0-9]{9}$", message = "شماره موبایل معتبر نیست")
     private String customerMobile;
 
     private LocalDateTime orderDate;
 
     private String status;
 
-    @NotBlank(message = "آدرس نمی‌تواند خالی باشد")
     private String address;
 
     private Long userId;

@@ -2,8 +2,6 @@ package ir.shop.online.core.infrastructure.persistence.entity;
 
 import ir.shop.online.commons.infrastructure.persistence.entity.ActiveDeleteAuditingEntity;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -24,8 +22,6 @@ public class CategoryEntity extends ActiveDeleteAuditingEntity {
     @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
 
-    @NotBlank(message = "عنوان نمی‌تواند خالی باشد")
-    @Size(min = 2, max = 100, message = "عنوان باید بین ۲ تا ۱۰۰ کاراکتر باشد")
     @Column(nullable = false)
     private String title;
 

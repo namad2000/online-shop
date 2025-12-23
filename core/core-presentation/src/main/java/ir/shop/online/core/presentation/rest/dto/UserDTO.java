@@ -1,7 +1,10 @@
 package ir.shop.online.core.presentation.rest.dto;
 
-import jakarta.validation.constraints.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -14,18 +17,12 @@ public class UserDTO {
 
     private Long id;
 
-    @NotBlank(message = "نام نمی‌تواند خالی باشد")
-    @Size(min = 2, max = 100, message = "نام باید بین ۲ تا ۱۰۰ کاراکتر باشد")
     private String firstName;
 
-    @NotBlank(message = "نام خانوادگی نمی‌تواند خالی باشد")
-    @Size(min = 2, max = 100, message = "نام خانوادگی باید بین ۲ تا ۱۰۰ کاراکتر باشد")
     private String lastName;
 
-    @Pattern(regexp = "^09[0-9]{9}$", message = "شماره موبایل معتبر نیست")
     private String mobileNumber;
 
-    @Email(message = "ایمیل معتبر نیست")
     private String email;
 
 //    private String password; // فقط برای ایجاد کاربر جدید
@@ -38,5 +35,5 @@ public class UserDTO {
 //    private LocalDateTime lastLoginAt;
 
     // آدرس‌های کاربر
-     private List<AddressDTO> addresses;
+    private List<AddressDTO> addresses;
 }
