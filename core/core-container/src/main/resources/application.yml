@@ -9,9 +9,10 @@ spring:
       enabled: true
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/postgres
+    url: jdbc:postgresql://172.16.15.69:5433/postgres
     username: postgres
     password: 1234
+
     hikari:
       connection-timeout: 20000
       maximum-pool-size: 10
@@ -25,7 +26,7 @@ spring:
         format_sql: true
   data:
     redis:
-      host: localhost
+      host: 172.16.15.69
       port: 6379
       timeout: 5000ms
       lettuce:
@@ -45,3 +46,10 @@ otp:
   expiration-time: 300  # 5 دقیقه به ثانیه
   max-attempts: 3
   resend-cooldown: 60   # 1 دقیقه به
+
+doc:
+  title: Online Shop
+  version: @project.version@
+  description: Shop For Younger ...
+  server:
+    url: /api

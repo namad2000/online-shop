@@ -36,5 +36,10 @@
             <groupId>ir.online-shop</groupId>
             <artifactId>core-domain</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>ir.online-shop</groupId>
+            <artifactId>core-application</artifactId>
+        </dependency>
     </dependencies>
 </project>

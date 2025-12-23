@@ -21,16 +21,16 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @PropertySource(value = "classpath:api-doc.yml", factory = YamlPropertySourceFactory.class)
 public class ApiDocConfiguration {
-    @Value("${green.doc.title}")
+    @Value("${doc.title}")
     private String title;
 
-    @Value("${green.doc.version}")
+    @Value("${doc.version}")
     private String version;
 
-    @Value("${green.doc.description}")
+    @Value("${doc.description}")
     private String description;
 
-    @Value("${green.doc.server.url}")
+    @Value("${doc.server.url}")
     private String serverUrl;
 
     @Bean
