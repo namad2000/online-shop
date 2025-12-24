@@ -1,4 +1,4 @@
-package ir.shop.online.commons.infrastructure.persistence.mapper;
+package ir.shop.online.commons.mapper;
 
 import org.mapstruct.MapperConfig;
 import org.mapstruct.ReportingPolicy;

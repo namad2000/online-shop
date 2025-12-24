@@ -22,5 +22,6 @@
         <module>commons-property-config</module>
         <module>commons-property</module>
         <module>commons-container</module>
+        <module>commons-mapper</module>
     </modules>
 </project>

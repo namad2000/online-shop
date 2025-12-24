@@ -1,7 +1,7 @@
 package ir.shop.online.core.infrastructure.persistence.mapper;
 
 import ir.shop.online.commons.infrastructure.persistence.mapper.CommonsInfrastructureMapper;
-import ir.shop.online.commons.infrastructure.persistence.mapper.CommonsMapperConfig;
+import ir.shop.online.commons.mapper.CommonsMapperConfig;
 import ir.shop.online.core.domain.model.category.Category;
 import ir.shop.online.core.infrastructure.persistence.entity.CategoryEntity;
 import org.mapstruct.Mapper;
@@ -59,5 +59,4 @@ public interface CategoryMapper extends CommonsInfrastructureMapper<Category, Ca
         entity.setVersion(parent.getVersion());
         return entity;
     }
-
 }
