@@ -2,36 +2,38 @@ package ir.shop.online.core.presentation.rest;
 
 
 import ir.shop.online.core.domain.model.category.Category;
-import ir.shop.online.core.domain.model.category.CreateCategory;
-import ir.shop.online.core.domain.model.category.UpdateCategory;
 import ir.shop.online.core.domain.usecase.CategoryUseCase;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/category")
+@Path("/category")
 @RequiredArgsConstructor
 public class CategoryController {
 
     private final CategoryUseCase categoryUseCase;
 //    private final CategoryMapper categoryMapper;
 
-    @PostMapping("/create")
-    public Category create(
-            @RequestBody CreateCategory request) {
-        return categoryUseCase.create(request);
-    }
+//    @PostMapping("/create")
+//    public Category create(
+//            @RequestBody CreateCategory request) {
+//        return categoryUseCase.create(request);
+//    }
 
-    @PutMapping("/{categoryId}")
-    public Category update(
-            @PathVariable Integer categoryId,
-            @RequestBody UpdateCategory request) {
-        return categoryUseCase.update(categoryId, request);
-    }
+//    @PutMapping("/{categoryId}")
+//    public Category update(
+//            @PathVariable Integer categoryId,
+//            @RequestBody UpdateCategory request) {
+//        return categoryUseCase.update(categoryId, request);
+//    }
 
-    @GetMapping("{id}")
-    public Category getById(@PathVariable("id") Integer id) {
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("{id}")
+    public Category getById(@PathParam("id") Integer id) {
         return categoryUseCase.getById(id);
     }
 }

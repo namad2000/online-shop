@@ -32,9 +32,9 @@
 <!--            <artifactId>commons-validation</artifactId>-->
 <!--        </dependency>-->
 
-        <dependency>
-            <groupId>ir.online-shop</groupId>
-            <artifactId>commons-property</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>ir.online-shop</groupId>-->
+<!--            <artifactId>commons-property</artifactId>-->
+<!--        </dependency>-->
     </dependencies>
 </project>
