@@ -17,10 +17,10 @@
         <module>commons-infrastructure</module>
         <module>commons-presentation</module>
         <module>commons-util</module>
-        <module>commons-validation</module>
-        <module>commons-api-doc</module>
-        <module>commons-property-config</module>
-        <module>commons-property</module>
+<!--        <module>commons-validation</module>-->
+<!--        <module>commons-api-doc</module>-->
+<!--        <module>commons-property-config</module>-->
+<!--        <module>commons-property</module>-->
         <module>commons-container</module>
     </modules>
 </project>
