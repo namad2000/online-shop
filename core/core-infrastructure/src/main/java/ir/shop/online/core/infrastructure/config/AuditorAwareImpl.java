@@ -10,7 +10,7 @@ public class AuditorAwareImpl implements AuditorAware<String> {
 
     @Override
     public Optional<String> getCurrentAuditor() {
-        return Optional.of("SYSTEM"); 
+        return Optional.of("SYSTEM");
         // بعداً از SecurityContext می‌گیری
     }
 }
