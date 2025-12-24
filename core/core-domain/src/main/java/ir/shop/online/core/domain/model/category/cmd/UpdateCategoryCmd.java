@@ -1,4 +1,4 @@
-package ir.shop.online.core.domain.model.category;
+package ir.shop.online.core.domain.model.category.cmd;
 
 
 import ir.shop.online.commons.domain.model.Version;
@@ -15,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class UpdateCategory extends Version<Integer> {
+public class UpdateCategoryCmd extends Version<Integer> {
 
     @NotEmpty
     private String title;

@@ -1,4 +1,4 @@
-package ir.shop.online.core.domain.model.category;
+package ir.shop.online.core.domain.model.category.cmd;
 
 
 import ir.shop.online.commons.domain.validation.NotEmpty;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateCategory {
+public class CreateCategoryCmd {
 
     @NotEmpty
     private String title;

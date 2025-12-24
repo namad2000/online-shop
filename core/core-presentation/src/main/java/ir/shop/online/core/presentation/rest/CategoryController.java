@@ -2,11 +2,10 @@ package ir.shop.online.core.presentation.rest;
 
 
 import ir.shop.online.core.domain.model.category.Category;
-import ir.shop.online.core.domain.model.category.CreateCategory;
-import ir.shop.online.core.domain.model.category.UpdateCategory;
+import ir.shop.online.core.domain.model.category.cmd.CreateCategoryCmd;
+import ir.shop.online.core.domain.model.category.cmd.UpdateCategoryCmd;
 import ir.shop.online.core.domain.usecase.CategoryUseCase;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,14 +18,14 @@ public class CategoryController {
 
     @PostMapping("/create")
     public Category create(
-            @RequestBody CreateCategory request) {
+            @RequestBody CreateCategoryCmd request) {
         return categoryUseCase.create(request);
     }
 
     @PutMapping("/{categoryId}")
     public Category update(
             @PathVariable Integer categoryId,
-            @RequestBody UpdateCategory request) {
+            @RequestBody UpdateCategoryCmd request) {
         return categoryUseCase.update(categoryId, request);
     }
 

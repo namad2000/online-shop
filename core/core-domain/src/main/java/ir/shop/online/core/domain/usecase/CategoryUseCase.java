@@ -2,13 +2,13 @@ package ir.shop.online.core.domain.usecase;
 
 
 import ir.shop.online.core.domain.model.category.Category;
-import ir.shop.online.core.domain.model.category.CreateCategory;
-import ir.shop.online.core.domain.model.category.UpdateCategory;
+import ir.shop.online.core.domain.model.category.cmd.CreateCategoryCmd;
+import ir.shop.online.core.domain.model.category.cmd.UpdateCategoryCmd;
 
 public interface CategoryUseCase {
-    Category create(CreateCategory createCategory);
+    Category create(CreateCategoryCmd createCategoryCmd);
 
-    Category update(Integer id, UpdateCategory createCategory);
+    Category update(Integer id, UpdateCategoryCmd createCategory);
 
     Category getById(Integer userId);
 }

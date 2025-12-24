@@ -6,8 +6,8 @@ import ir.shop.online.commons.domain.validation.IsValid;
 import ir.shop.online.commons.domain.validation.NotNull;
 import ir.shop.online.core.domain.exception.ExceptionCode;
 import ir.shop.online.core.domain.model.category.Category;
-import ir.shop.online.core.domain.model.category.CreateCategory;
-import ir.shop.online.core.domain.model.category.UpdateCategory;
+import ir.shop.online.core.domain.model.category.cmd.CreateCategoryCmd;
+import ir.shop.online.core.domain.model.category.cmd.UpdateCategoryCmd;
 import ir.shop.online.core.domain.repository.jpa.CategoryRepository;
 import ir.shop.online.core.domain.usecase.CategoryUseCase;
 import lombok.RequiredArgsConstructor;
@@ -23,13 +23,13 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
 
     @IsValid
     @Override
-    public Category create(CreateCategory createCategory) {
+    public Category create(CreateCategoryCmd createCategoryCmd) {
 
         Category parentCategory = null;
 
         // If a parent is specified, it must exist
-        if (createCategory.getParentId() != null) {
-            parentCategory = categoryRepository.findById(createCategory.getParentId())
+        if (createCategoryCmd.getParentId() != null) {
+            parentCategory = categoryRepository.findById(createCategoryCmd.getParentId())
                     .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_01.name()));
         } else {
             // If no parent is given but a root category already exists → not allowed
@@ -40,12 +40,12 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
         }
 
         if (parentCategory == null) {
-            if (categoryRepository.existsByTitleAndParentIsNull(createCategory.getTitle())) {
+            if (categoryRepository.existsByTitleAndParentIsNull(createCategoryCmd.getTitle())) {
                 throw new DomainException(ExceptionCode.CATEGORY_02.name()); // Duplicate category with same parent
             }
         } else {
             // Check if a category with the same title and parent already exists
-            if (categoryRepository.existsByTitleAndParentId(createCategory.getTitle(), parentCategory.getId())) {
+            if (categoryRepository.existsByTitleAndParentId(createCategoryCmd.getTitle(), parentCategory.getId())) {
                 throw new DomainException(ExceptionCode.CATEGORY_02.name()); // Duplicate category with same parent
             }
         }
@@ -53,14 +53,14 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
         // Determine the level
         int level = (parentCategory == null) ? 0 : parentCategory.getLevel() + 1;
 
-        Category newCategory = buildCategory(createCategory, parentCategory, level);
+        Category newCategory = buildCategory(createCategoryCmd, parentCategory, level);
 
         return categoryRepository.save(newCategory);
     }
 
     @IsValid
     @Override
-    public Category update(Integer id, UpdateCategory command) {
+    public Category update(Integer id, UpdateCategoryCmd command) {
 
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_01.name()));
@@ -97,11 +97,11 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
                 .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_01.name()));
     }
 
-    private static Category buildCategory(CreateCategory createCategory, Category parentCategory, int level) {
+    private static Category buildCategory(CreateCategoryCmd createCategoryCmd, Category parentCategory, int level) {
         // Create a new category
         return Category.builder()
-                .title(createCategory.getTitle())
-                .description(createCategory.getDescription())
+                .title(createCategoryCmd.getTitle())
+                .description(createCategoryCmd.getDescription())
                 .parent(parentCategory)
                 .level(level)
                 .build();
