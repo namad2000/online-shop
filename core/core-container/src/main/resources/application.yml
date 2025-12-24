@@ -1,57 +1,26 @@
-spring:
-  application:
-    name: online-shop
-  main:
-    banner-mode: off
+greeting:
+  message: "hello"
 
-  threads:
-    virtual:
-      enabled: true
-
+# Datasource configuration
+quarkus:
   datasource:
-    url: jdbc:postgresql://172.16.15.69:5433/postgres
+    db-kind: postgresql
     username: postgres
     password: 1234
+    jdbc:
+      url: jdbc:postgresql://172.16.15.69:5433/postgres
+    # اگر می‌خواهید DevServices (Docker) خودکار فعال باشد
+    devservices:
+      enabled: true
 
-    hikari:
-      connection-timeout: 20000
-      maximum-pool-size: 10
-  jpa:
-    hibernate:
-      ddl-auto: update  # (validate, update, create, create-drop)
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-  data:
-    redis:
-      host: 172.16.15.69
-      port: 6379
-      timeout: 5000ms
-      lettuce:
-        pool:
-          max-active: 8
-          max-idle: 8
-          min-idle: 0
+  hibernate-orm:
+    # برای ایجاد یا آپدیت جدول‌ها در شروع
+    database:
+      generation: update
+    log:
+      sql: true
 
-server:
-  port: 8081
-  servlet:
-    context-path: /api
-
-
-
-otp:
-  expiration-time: 300  # 5 دقیقه به ثانیه
-  max-attempts: 3
-  resend-cooldown: 60   # 1 دقیقه به
-
-doc:
-  title: Online Shop
-  version: @project.version@
-  description: Shop For Younger ...
-  server:
-    url: /api
-
-test: 99999
+  # Logging
+  log:
+    category:
+      "io.quarkus.hibernate.orm": DEBUG
