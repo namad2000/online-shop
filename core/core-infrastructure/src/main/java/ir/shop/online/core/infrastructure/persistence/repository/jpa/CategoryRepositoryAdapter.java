@@ -24,9 +24,13 @@ public class CategoryRepositoryAdapter implements CategoryRepository {
     }
 
     @Override
-    public boolean existsByTitleAndParent(String title, Category parentCategory) {
-        CategoryEntity parentCategoryEntity = categoryMapper.toEntity(parentCategory);
-        return categoryJpaRepository.existsByTitleAndParent(title, parentCategoryEntity);
+    public boolean existsByTitleAndParentIsNull(String title) {
+        return categoryJpaRepository.existsByTitleAndParentIsNull(title);
+    }
+
+    @Override
+    public boolean existsByTitleAndParentId(String title, Integer parentCategoryId) {
+        return categoryJpaRepository.existsByTitleAndParent_Id(title, parentCategoryId);
     }
 
     @Override

@@ -7,6 +7,6 @@ import ir.shop.online.core.domain.model.category.Category;
 public interface CategoryRepository extends DomainRepository<Category, Integer> {
 
     boolean existsByParentIsNull();
-
-    boolean existsByTitleAndParent(String title, Category parentCategory);
+    boolean existsByTitleAndParentIsNull(String title);
+    boolean existsByTitleAndParentId(String title, Integer parentCategoryId);
 }

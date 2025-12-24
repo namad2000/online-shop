@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface CategoryJpaRepository extends JpaRepository<CategoryEntity, Integer> {
     boolean existsByParentIsNull();
 
-    boolean existsByTitleAndParent(String title, CategoryEntity parentCategory);
+    boolean existsByTitleAndParentIsNull(String title);
+
+    boolean existsByTitleAndParent_Id(String title, Integer parentCategoryId);
 }
