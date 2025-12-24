@@ -1,6 +1,7 @@
 package ir.shop.online.commons.infrastructure.config;
 
 
+import ir.shop.online.commons.domain.annotation.DomainMapper;
 import ir.shop.online.commons.domain.annotation.UseCaseService;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,7 @@ import org.springframework.context.annotation.FilterType;
         includeFilters = {
                 @ComponentScan.Filter(
                         type = FilterType.ANNOTATION,
-                        classes = {UseCaseService.class}
+                        classes = {DomainMapper.class, UseCaseService.class}
                 )
         }
 )
