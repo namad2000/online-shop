@@ -1,5 +1,6 @@
 package ir.shop.online.commons.validation;
 
+import ir.shop.online.commons.domain.validation.Constraint;
 import ir.shop.online.commons.domain.validation.IsValid;
 import ir.shop.online.commons.domain.validation.ValidatedBy;
 import ir.shop.online.commons.domain.validation.validator.AnnotationValidator;
@@ -20,23 +21,23 @@ public class Validator {
         Class<?> clazz = object.getClass();
         if (isPrimitiveOrWrapper(clazz) || clazz == String.class) return;
 
-        // Iterate over all fields in the class
         for (Field field : clazz.getDeclaredFields()) {
             field.setAccessible(true);
             Object value = field.get(object);
-            String fieldName = field.getName();  // Get the field name
+            String fieldName = field.getName();
 
-            // Check annotations on the field
             for (Annotation ann : field.getAnnotations()) {
-                ValidatedBy vb = ann.annotationType().getAnnotation(ValidatedBy.class);
-                if (vb != null) {
-                    AnnotationValidator validator = vb.value().getDeclaredConstructor().newInstance();
-                    // Pass the field name to the validator
-                    validator.validate(value, ann, fieldName);
+                // only proceed if annotation has your custom @Constraint
+                if (ann.annotationType().isAnnotationPresent(Constraint.class)) {
+                    ValidatedBy vb = ann.annotationType().getAnnotation(ValidatedBy.class);
+                    if (vb != null) {
+                        AnnotationValidator validator = vb.value().getDeclaredConstructor().newInstance();
+                        validator.validate(value, ann, fieldName);
+                    }
                 }
             }
 
-            // Recursively validate if the field is annotated with @IsValid
+            // recursively validate nested objects (optional)
             if (field.isAnnotationPresent(IsValid.class)) {
                 validate(value);
             }
@@ -51,26 +52,27 @@ public class Validator {
             Object arg = args[i];
             Parameter param = params[i];
 
-            // Check annotations on the parameter
             for (Annotation ann : param.getAnnotations()) {
-                ValidatedBy vb = ann.annotationType().getAnnotation(ValidatedBy.class);
-                if (vb != null) {
-                    AnnotationValidator validator = vb.value().getDeclaredConstructor().newInstance();
-                    // Pass the parameter name to the validator
-                    String paramName = param.getName();
-                    validator.validate(arg, ann, paramName);
+                // only proceed if annotation has your custom @Constraint
+                if (ann.annotationType().isAnnotationPresent(Constraint.class)) {
+                    ValidatedBy vb = ann.annotationType().getAnnotation(ValidatedBy.class);
+                    if (vb != null) {
+                        AnnotationValidator validator = vb.value().getDeclaredConstructor().newInstance();
+                        String paramName = param.getName();
+                        validator.validate(arg, ann, paramName);
+                    }
                 }
             }
 
-            // Recursively validate if the parameter is annotated with @IsValid
+            // recursively validate nested objects (optional)
             if (param.isAnnotationPresent(IsValid.class)) {
                 validate(arg);
             }
         }
     }
 
-    // Helper method to check if a class is a primitive or wrapper
-    private static boolean isPrimitiveOrWrapper(Class<?> clazz) {
+    // Helper method
+    public static boolean isPrimitiveOrWrapper(Class<?> clazz) {
         return clazz.isPrimitive()
                 || clazz == Byte.class
                 || clazz == Short.class
@@ -82,4 +84,3 @@ public class Validator {
                 || clazz == Character.class;
     }
 }
-

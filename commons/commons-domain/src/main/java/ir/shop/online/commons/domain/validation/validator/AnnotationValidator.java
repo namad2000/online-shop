@@ -9,7 +9,6 @@ import java.lang.annotation.Annotation;
  * 09125188694
  */
 
-
 public interface AnnotationValidator<T, A extends Annotation> {
     // Validate the value based on the annotation and field name
     void validate(T value, A annotation, String paramName);
