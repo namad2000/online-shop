@@ -1,11 +1,13 @@
 package ir.shop.online.commons.infrastructure.persistence.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
+@MappedSuperclass
 @Getter
 @Setter
 @ToString

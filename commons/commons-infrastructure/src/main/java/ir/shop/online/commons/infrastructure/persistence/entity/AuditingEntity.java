@@ -1,6 +1,7 @@
 package ir.shop.online.commons.infrastructure.persistence.entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Version;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 
+@MappedSuperclass
 @Getter
 @Setter
 @SuperBuilder
