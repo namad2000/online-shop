@@ -21,5 +21,6 @@
         <module>commons-api-doc</module>
         <module>commons-property-config</module>
         <module>commons-property</module>
+        <module>commons-container</module>
     </modules>
 </project>
