@@ -17,6 +17,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>ir.online-shop</groupId>
             <artifactId>core-infrastructure</artifactId>
             <version>${core.version}</version>
@@ -26,6 +31,18 @@
             <groupId>ir.online-shop</groupId>
             <artifactId>core-presentation</artifactId>
             <version>${core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ir.online-shop</groupId>
+            <artifactId>core-application</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ir.online-shop</groupId>
+            <artifactId>core-domain</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

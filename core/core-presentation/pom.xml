@@ -28,13 +28,18 @@
         </dependency>
 
         <dependency>
-            <groupId>ir.online-shop</groupId>
-            <artifactId>core-domain</artifactId>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest-jackson</artifactId>
         </dependency>
 
         <dependency>
             <groupId>ir.online-shop</groupId>
-            <artifactId>core-application</artifactId>
+            <artifactId>core-domain</artifactId>
         </dependency>
 
         <dependency>

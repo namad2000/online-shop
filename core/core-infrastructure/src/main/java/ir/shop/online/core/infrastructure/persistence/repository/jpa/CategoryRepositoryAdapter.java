@@ -4,15 +4,22 @@ package ir.shop.online.core.infrastructure.persistence.repository.jpa;
 import ir.shop.online.commons.domain.validation.IsValid;
 import ir.shop.online.core.domain.model.category.Category;
 import ir.shop.online.core.domain.repository.jpa.CategoryRepository;
-import ir.shop.online.core.infrastructure.persistence.mapper.CategoryMapper;
-import lombok.RequiredArgsConstructor;
+import ir.shop.online.core.infrastructure.persistence.entity.CategoryEntity;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import java.util.Optional;
 
-@RequiredArgsConstructor
+@ApplicationScoped
 public class CategoryRepositoryAdapter implements CategoryRepository {
 
-    private final CategoryMapper categoryMapper;
+//    @Inject
+//    CategoryMapper categoryMapper;
+
+
+    @PersistenceContext
+    EntityManager em;
 
     @Override
     public boolean existsByParentIsNull() {
@@ -36,10 +43,14 @@ public class CategoryRepositoryAdapter implements CategoryRepository {
 
     @Override
     public Optional<Category> findById(Integer id) {
-        return Optional.ofNullable(Category.builder()
-                .title("برای کواکوس")
-                .description("تست برای مهندس سلطانی عزیز")
-                .build()
+        CategoryEntity categoryFound = em.find(CategoryEntity.class, id);
+
+        return Optional.of(
+                Category.builder()
+                        .id(categoryFound.getId())
+                        .title(categoryFound.getTitle())
+                        .description(categoryFound.getDescription())
+                        .build()
         );
     }
 

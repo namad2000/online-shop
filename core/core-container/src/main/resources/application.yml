@@ -3,6 +3,24 @@ greeting:
 
 # Datasource configuration
 quarkus:
+  http:
+    port: 9001
+    root-path: /api
+  index-dependency:
+    domain:
+      group-id: ir.shop.online
+      artifact-id: core-domain
+    application:
+      group-id: ir.shop.online
+      artifact-id: core-application
+    infrastructure:
+      group-id: ir.shop.online
+      artifact-id: core-infrastructure
+    presentation:
+      group-id: ir.online-shop
+      artifact-id: core-presentation
+
+
   datasource:
     db-kind: postgresql
     username: postgres
