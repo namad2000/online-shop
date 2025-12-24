@@ -20,9 +20,8 @@ import java.lang.reflect.Parameter;
 @Component
 public class ValidationAspect {
 
-    // Before advice that runs before method execution with @IsValid annotations
-    @Before("execution(* *(..)) && @annotation(ir.shop.online.commons.domain.validation.IsValid)")
-    // Apply only on methods with @IsValid annotation
+    // Before advice that runs before method execution in classes annotated with @UseCaseService
+    @Before("within(@ir.shop.online.commons.domain.annotation.UseCaseService *)")
     public void validateMethod(JoinPoint joinPoint) {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
 
@@ -31,7 +30,7 @@ public class ValidationAspect {
         Parameter[] params = method.getParameters();
         Validator.validateMethodParams(args, params);
 
-        // Validate any field in the method parameters with @IsValid annotation (nested objects)
+        // Validate any field in the method parameters recursively
         for (Object arg : args) {
             if (arg != null) {
                 Validator.validate(arg);
@@ -39,18 +38,17 @@ public class ValidationAspect {
         }
     }
 
-    // Aspect for validating fields annotated with @IsValid
-    @Before("execution(* *(..)) && @annotation(ir.shop.online.commons.domain.validation.IsValid)")
-    // Apply before any method execution with @IsValid
+    // Aspect for validating fields recursively (kept for backward compatibility)
+    @Before("within(@ir.shop.online.commons.domain.annotation.UseCaseService *)")
     public void validateFields(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
 
-        // Iterate through method parameters and validate the fields of each parameter if they are annotated with @IsValid
         for (Object arg : args) {
             if (arg != null) {
-                Validator.validate(arg);  // Validate nested fields recursively
+                Validator.validate(arg);
             }
         }
     }
 }
+
 

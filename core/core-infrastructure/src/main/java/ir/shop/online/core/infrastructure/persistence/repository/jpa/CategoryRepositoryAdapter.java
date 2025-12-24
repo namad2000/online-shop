@@ -1,6 +1,7 @@
 package ir.shop.online.core.infrastructure.persistence.repository.jpa;
 
 
+import ir.shop.online.commons.domain.validation.IsValid;
 import ir.shop.online.core.domain.model.category.Category;
 import ir.shop.online.core.domain.repository.jpa.CategoryRepository;
 import ir.shop.online.core.infrastructure.persistence.entity.CategoryEntity;
@@ -34,7 +35,7 @@ public class CategoryRepositoryAdapter implements CategoryRepository {
     }
 
     @Override
-    public Category save(Category category) {
+    public Category save(@IsValid Category category) {
         CategoryEntity categoryEntity = categoryMapper.toEntity(category);
         categoryEntity = categoryJpaRepository.save(categoryEntity);
 

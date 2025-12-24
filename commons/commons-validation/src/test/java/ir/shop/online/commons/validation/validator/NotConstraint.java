@@ -1,15 +1,11 @@
-package ir.shop.online.commons.domain.validation;
-
-import ir.shop.online.commons.domain.validation.validator.NotEmptyValidator;
+package ir.shop.online.commons.validation.validator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.PARAMETER})
-@ValidatedBy(NotEmptyValidator.class)
-public @interface NotEmpty {
+public @interface NotConstraint {
 }

@@ -9,6 +9,7 @@ import java.lang.annotation.*;
  * Package: ir.shop.online.commons.domain
  */
 
+@Constraint
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
