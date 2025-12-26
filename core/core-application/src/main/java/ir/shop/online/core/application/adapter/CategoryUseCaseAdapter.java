@@ -4,7 +4,7 @@ import ir.shop.online.commons.domain.annotation.UseCaseService;
 import ir.shop.online.commons.domain.exception.DomainException;
 import ir.shop.online.commons.domain.validation.IsValid;
 import ir.shop.online.commons.domain.validation.NotNull;
-import ir.shop.online.core.domain.exception.ExceptionCode;
+import ir.shop.online.core.domain.exception.CategoryExceptionCode;
 import ir.shop.online.core.domain.model.category.Category;
 import ir.shop.online.core.domain.model.category.cmd.CreateCategoryCmd;
 import ir.shop.online.core.domain.model.category.cmd.UpdateCategoryCmd;
@@ -30,23 +30,23 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
         // If a parent is specified, it must exist
         if (createCategoryCmd.getParentId() != null) {
             parentCategory = categoryRepository.findById(createCategoryCmd.getParentId())
-                    .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_01.name()));
+                    .orElseThrow(() -> new DomainException(CategoryExceptionCode.CATEGORY_01.name()));
         } else {
             // If no parent is given but a root category already exists → not allowed
             boolean rootExists = categoryRepository.existsByParentIsNull();
             if (rootExists) {
-                throw new DomainException(ExceptionCode.CATEGORY_03.name()); // Only one root category allowed
+                throw new DomainException(CategoryExceptionCode.CATEGORY_03.name()); // Only one root category allowed
             }
         }
 
         if (parentCategory == null) {
             if (categoryRepository.existsByTitleAndParentIsNull(createCategoryCmd.getTitle())) {
-                throw new DomainException(ExceptionCode.CATEGORY_02.name()); // Duplicate category with same parent
+                throw new DomainException(CategoryExceptionCode.CATEGORY_02.name()); // Duplicate category with same parent
             }
         } else {
             // Check if a category with the same title and parent already exists
             if (categoryRepository.existsByTitleAndParentId(createCategoryCmd.getTitle(), parentCategory.getId())) {
-                throw new DomainException(ExceptionCode.CATEGORY_02.name()); // Duplicate category with same parent
+                throw new DomainException(CategoryExceptionCode.CATEGORY_02.name()); // Duplicate category with same parent
             }
         }
 
@@ -63,7 +63,7 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
     public Category update(Integer id, UpdateCategoryCmd command) {
 
         Category category = categoryRepository.findById(id)
-                .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_01.name()));
+                .orElseThrow(() -> new DomainException(CategoryExceptionCode.CATEGORY_01.name()));
 
         boolean titleChanged = !category.getTitle().equals(command.getTitle());
 
@@ -71,7 +71,7 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
             if (category.getParent() == null) {
                 // Root category
                 if (categoryRepository.existsByTitleAndParentIsNull(command.getTitle())) {
-                    throw new DomainException(ExceptionCode.CATEGORY_02.name());
+                    throw new DomainException(CategoryExceptionCode.CATEGORY_02.name());
                 }
             } else {
                 // Child category
@@ -79,7 +79,7 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
                         command.getTitle(),
                         category.getParent().getId()
                 )) {
-                    throw new DomainException(ExceptionCode.CATEGORY_02.name());
+                    throw new DomainException(CategoryExceptionCode.CATEGORY_02.name());
                 }
             }
         }
@@ -94,7 +94,7 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
     @Override
     public Category getById(@NotNull Integer categoryId) {
         return categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new DomainException(ExceptionCode.CATEGORY_01.name()));
+                .orElseThrow(() -> new DomainException(CategoryExceptionCode.CATEGORY_01.name()));
     }
 
     private static Category buildCategory(CreateCategoryCmd createCategoryCmd, Category parentCategory, int level) {

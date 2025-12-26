@@ -1,5 +1,8 @@
-package ir.shop.online.core.domain.model.product;
+package ir.shop.online.core.domain.model.product.cmd;
 
+import ir.shop.online.commons.domain.validation.Min;
+import ir.shop.online.commons.domain.validation.NotEmpty;
+import ir.shop.online.commons.domain.validation.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,16 +15,22 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateProduct {
+public class CreateProductCmd {
 
+    @NotEmpty
     private String title;
 
+    @NotNull
+    @Min(0)
     private BigDecimal price;
 
     private String description;
 
+    @NotNull
+    @Min(0)
     private Integer stock;
 
+    @NotNull
     private Integer categoryId;
 
     private List<String> imageUrls;

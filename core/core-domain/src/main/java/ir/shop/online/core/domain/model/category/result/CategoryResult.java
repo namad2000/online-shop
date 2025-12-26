@@ -16,7 +16,9 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class CategoryResult extends Version<Integer> {
+public class CategoryResult {
+
+    private Integer id;
 
     private String title;
 

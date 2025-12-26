@@ -1,6 +1,7 @@
 package ir.shop.online.core.domain.model.product;
 
 
+import ir.shop.online.commons.domain.model.Version;
 import ir.shop.online.commons.domain.validation.NotEmpty;
 import ir.shop.online.commons.domain.validation.NotNull;
 import ir.shop.online.core.domain.model.ProductImage;
@@ -17,7 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class Product {
+public class Product extends Version<Long> {
 
     @NotEmpty
     private String name;
