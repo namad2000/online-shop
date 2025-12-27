@@ -19,7 +19,6 @@
     <modules>
         <module>commons</module>
         <module>core</module>
-        <module>commons/commons-application</module>
     </modules>
 
     <properties>

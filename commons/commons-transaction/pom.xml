@@ -26,7 +26,7 @@
 
         <dependency>
             <groupId>ir.online-shop</groupId>
-            <artifactId>commons-application</artifactId>
+            <artifactId>commons-domain</artifactId>
         </dependency>
 
         <!-- ========== TEST DEPENDENCIES ========== -->

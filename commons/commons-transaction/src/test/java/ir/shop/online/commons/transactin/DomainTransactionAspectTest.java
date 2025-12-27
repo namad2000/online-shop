@@ -1,6 +1,6 @@
 package ir.shop.online.commons.transactin;
 
-import ir.shop.online.commons.application.transaction.DomainTransaction;
+import ir.shop.online.commons.domain.annotation.DomainTransaction;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

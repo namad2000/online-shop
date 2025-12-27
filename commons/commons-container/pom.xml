@@ -16,6 +16,7 @@
 
     <properties>
         <commons-api-doc.version>0.0.1-SNAPSHOT</commons-api-doc.version>
+        <commons-transaction.version>0.0.1-SNAPSHOT</commons-transaction.version>
     </properties>
 
     <profiles>
@@ -23,6 +24,12 @@
             <id>c-api-doc</id>
 
             <dependencies>
+                <dependency>
+                    <groupId>ir.online-shop</groupId>
+                    <artifactId>commons-transaction</artifactId>
+                    <version>${commons-transaction.version}</version>
+                </dependency>
+
                 <dependency>
                     <groupId>ir.online-shop</groupId>
                     <artifactId>commons-api-doc</artifactId>
