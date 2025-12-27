@@ -14,6 +14,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>commons-domain</module>
+        <module>commons-application</module>
         <module>commons-infrastructure</module>
         <module>commons-presentation</module>
         <module>commons-util</module>
@@ -23,5 +24,6 @@
         <module>commons-property</module>
         <module>commons-container</module>
         <module>commons-mapper</module>
+        <module>commons-transaction</module>
     </modules>
 </project>

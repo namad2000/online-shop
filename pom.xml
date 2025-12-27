@@ -19,6 +19,7 @@
     <modules>
         <module>commons</module>
         <module>core</module>
+        <module>commons/commons-application</module>
     </modules>
 
     <properties>
@@ -98,6 +99,12 @@
             <dependency>
                 <groupId>ir.online-shop</groupId>
                 <artifactId>commons-util</artifactId>
+                <version>${commons.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ir.online-shop</groupId>
+                <artifactId>commons-application</artifactId>
                 <version>${commons.version}</version>
             </dependency>
 
