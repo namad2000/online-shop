@@ -4,10 +4,12 @@ import ir.shop.online.commons.domain.annotation.UseCaseService;
 import ir.shop.online.commons.domain.exception.DomainException;
 import ir.shop.online.commons.domain.validation.IsValid;
 import ir.shop.online.commons.domain.validation.NotNull;
+import ir.shop.online.core.domain.mapper.CategoryInternalMapper;
 import ir.shop.online.core.domain.exception.CategoryExceptionCode;
 import ir.shop.online.core.domain.model.Category;
 import ir.shop.online.core.domain.model.cmd.category.CreateCategoryCmd;
 import ir.shop.online.core.domain.model.cmd.category.UpdateCategoryCmd;
+import ir.shop.online.core.domain.model.result.category.CategoryResult;
 import ir.shop.online.core.domain.repository.jpa.CategoryRepository;
 import ir.shop.online.core.domain.usecase.CategoryUseCase;
 import lombok.RequiredArgsConstructor;
@@ -17,13 +19,14 @@ import lombok.RequiredArgsConstructor;
 public class CategoryUseCaseAdapter implements CategoryUseCase {
 
     private final CategoryRepository categoryRepository;
+    private final CategoryInternalMapper categoryInternalMapper;
 
 //    @Property(key = "test", defaultValue = "3000")
 //    private int test;
 
     @IsValid
     @Override
-    public Category create(CreateCategoryCmd createCategoryCmd) {
+    public CategoryResult create(CreateCategoryCmd createCategoryCmd) {
 
         Category parentCategory = null;
 
@@ -55,7 +58,8 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
 
         Category newCategory = buildCategory(createCategoryCmd, parentCategory, level);
 
-        return categoryRepository.save(newCategory);
+        Category save = categoryRepository.save(newCategory);
+        return categoryInternalMapper.toResult(save);
     }
 
     @IsValid
