@@ -3,7 +3,7 @@ package ir.shop.online.core.presentation.rest;
 
 import ir.shop.online.core.domain.model.otp.OTPType;
 import ir.shop.online.core.domain.model.otp.VerifyOTPRequest;
-import ir.shop.online.core.domain.usecase.OTPUseCase;
+import ir.shop.online.core.application.usecase.OTPUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

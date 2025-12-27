@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class UserMapperTest {
 
@@ -18,50 +18,81 @@ class UserMapperTest {
     }
 
     @Test
-    void shouldMapSingleObjectWithoutContext() {
+    void shouldToDomainSingle_withoutContext() {
         UserEntity entity = new UserEntity(1L, "Davood");
 
-        UserDto dto = mapper.map(entity);
+        UserDomain domain = mapper.toDomain(entity);
 
+        assertNotNull(domain);
+        assertEquals(1L, domain.getId());
+        assertEquals("Davood", domain.getName());
+    }
+
+    @Test
+    void shouldToResultSingle_withoutContext() {
+        UserDomain domain = new UserDomain(1L, "Davood");
+
+        UserDto dto = mapper.toResult(domain);
+
+        assertNotNull(dto);
         assertEquals(1L, dto.getId());
         assertEquals("Davood", dto.getFullName());
     }
 
     @Test
-    void shouldMapSingleObjectWithContext() {
-        UserEntity entity = new UserEntity(1L, "Davood");
+    void shouldToResultSingle_withContext_uppercase() {
+        UserDomain domain = new UserDomain(1L, "Davood");
 
-        MappingContext context = MappingContext.empty()
-                .put("upper", true);
+        MappingContext context = MappingContext.empty().put("upper", true);
 
-        UserDto dto = mapper.map(entity, context);
+        UserDto dto = mapper.toResult(domain, context);
 
+        assertEquals(1L, dto.getId());
         assertEquals("DAVOOD", dto.getFullName());
     }
 
     @Test
-    void shouldMapList() {
-        List<UserEntity> users = List.of(
+    void shouldToDomainList_withContext() {
+        List<UserEntity> inputs = List.of(
                 new UserEntity(1L, "Ali"),
                 new UserEntity(2L, "Reza")
         );
 
-        List<UserDto> result = mapper.mapList(users, MappingContext.empty());
+        List<UserDomain> domains = mapper.toDomain(inputs, MappingContext.empty());
 
-        assertEquals(2, result.size());
-        assertEquals("Ali", result.get(0).getFullName());
-        assertEquals("Reza", result.get(1).getFullName());
+        assertEquals(2, domains.size());
+        assertEquals(1L, domains.get(0).getId());
+        assertEquals("Ali", domains.get(0).getName());
+        assertEquals(2L, domains.get(1).getId());
+        assertEquals("Reza", domains.get(1).getName());
     }
 
     @Test
-    void shouldMapSet() {
-        Set<UserEntity> users = Set.of(
-                new UserEntity(1L, "Ali"),
-                new UserEntity(2L, "Reza")
+    void shouldToResultSet_withContext_uppercase() {
+        Set<UserDomain> domains = Set.of(
+                new UserDomain(1L, "Ali"),
+                new UserDomain(2L, "Reza")
         );
 
-        Set<UserDto> result = mapper.mapSet(users, MappingContext.empty());
+        MappingContext context = MappingContext.empty().put("upper", true);
 
-        assertEquals(2, result.size());
+        Set<UserDto> dtos = mapper.toResult(domains, context);
+
+        assertEquals(2, dtos.size());
+
+        // چون Set ترتیب ندارد، با contains/assertAnyMatch چک می‌کنیم
+        assertTrue(dtos.stream().anyMatch(d -> d.getId().equals(1L) && d.getFullName().equals("ALI")));
+        assertTrue(dtos.stream().anyMatch(d -> d.getId().equals(2L) && d.getFullName().equals("REZA")));
+    }
+
+    @Test
+    void shouldHandleEmptyCollections() {
+        List<UserDomain> domains = mapper.toDomain(List.of(), MappingContext.empty());
+        assertNotNull(domains);
+        assertTrue(domains.isEmpty());
+
+        Set<UserDto> dtos = mapper.toResult(Set.of(), MappingContext.empty());
+        assertNotNull(dtos);
+        assertTrue(dtos.isEmpty());
     }
 }

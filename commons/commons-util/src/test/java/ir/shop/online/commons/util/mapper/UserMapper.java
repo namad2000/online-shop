@@ -1,16 +1,30 @@
 package ir.shop.online.commons.util.mapper;
 
-class UserMapper implements Mapper<UserEntity, UserDto> {
+import java.util.Objects;
+
+public class UserMapper implements InputMapper<UserEntity, UserDomain>, ResultMapper<UserDomain, UserDto> {
 
     @Override
-    public UserDto map(UserEntity in, MappingContext context) {
+    public UserDomain toDomain(UserEntity input, MappingContext context) {
+        Objects.requireNonNull(input, "input must not be null");
+
+        return new UserDomain(
+                input.getId(),
+                input.getName()
+        );
+    }
+
+    @Override
+    public UserDto toResult(UserDomain domain, MappingContext context) {
+        Objects.requireNonNull(domain, "domain must not be null");
+
+        boolean upper = Boolean.TRUE.equals(context.get("upper"));
+        String name = domain.getName();
+
         UserDto dto = new UserDto();
-        dto.setId(in.getId());
-
-        Boolean upper = context.get("upper");
-        String name = in.getName();
-
-        dto.setFullName(Boolean.TRUE.equals(upper) ? name.toUpperCase() : name);
+        dto.setId(domain.getId());
+        dto.setFullName(upper ? name.toUpperCase() : name);
         return dto;
     }
 }
+

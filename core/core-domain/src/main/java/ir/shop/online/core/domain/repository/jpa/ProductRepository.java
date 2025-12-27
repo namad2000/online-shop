@@ -9,4 +9,6 @@ import ir.shop.online.core.domain.model.Product;
 public interface ProductRepository extends DomainRepository<Product, Long> {
 
     boolean existsByNameAndCategory(String title, Category category);
+
+    boolean existsBySku(String sku);
 }

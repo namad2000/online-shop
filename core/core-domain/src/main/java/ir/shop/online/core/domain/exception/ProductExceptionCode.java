@@ -3,8 +3,9 @@ package ir.shop.online.core.domain.exception;
 
 public enum ProductExceptionCode {
 
-    PRODUCT_01("Product not found"),
-    PRODUCT_02("Product exist in category");
+    PRODUCT_01("Product not found."),
+    PRODUCT_02("Product exist in category."),
+    PRODUCT_03("Product Sku is duplicated.");
 
     private final String description;
 

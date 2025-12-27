@@ -25,6 +25,11 @@ public class ProductRepositoryAdapter implements ProductRepository {
     }
 
     @Override
+    public boolean existsBySku(String sku) {
+        return productJpaRepository.existsBySku(sku);
+    }
+
+    @Override
     public Product save(Product product) {
         ProductEntity productEntity = productMapper.toEntity(product);
         productEntity = productJpaRepository.save(productEntity);

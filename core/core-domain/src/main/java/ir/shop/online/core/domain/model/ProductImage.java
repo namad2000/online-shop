@@ -15,6 +15,7 @@ import lombok.experimental.SuperBuilder;
 public class ProductImage {
 
     private String url;
+
     private Boolean isMain;
 
     private Product product;

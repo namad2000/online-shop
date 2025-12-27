@@ -2,9 +2,8 @@ package ir.shop.online.commons.domain.model;
 
 import ir.shop.online.commons.domain.validation.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 /**
@@ -14,8 +13,7 @@ import lombok.experimental.SuperBuilder;
  * Package: ir.shop.online.commons.infrastructure.model
  */
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
