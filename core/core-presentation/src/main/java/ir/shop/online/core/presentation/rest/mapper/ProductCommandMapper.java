@@ -11,6 +11,7 @@ import org.mapstruct.Mapper;
 public interface ProductCommandMapper {
 
     CreateProductCmd toCommand(CreateProductRequest request);
+
     CreateProductResponse toResponse(ProductResult result);
 
 }

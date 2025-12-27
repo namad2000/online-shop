@@ -4,7 +4,7 @@ import ir.shop.online.commons.domain.annotation.UseCaseService;
 import ir.shop.online.commons.domain.exception.DomainException;
 import ir.shop.online.commons.domain.validation.IsValid;
 import ir.shop.online.commons.domain.validation.NotNull;
-import ir.shop.online.core.domain.mapper.CategoryInternalMapper;
+import ir.shop.online.core.application.mapper.CategoryInternalMapper;
 import ir.shop.online.core.domain.exception.CategoryExceptionCode;
 import ir.shop.online.core.domain.model.Category;
 import ir.shop.online.core.domain.model.cmd.category.CreateCategoryCmd;
@@ -59,7 +59,7 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
         Category newCategory = buildCategory(createCategoryCmd, parentCategory, level);
 
         Category save = categoryRepository.save(newCategory);
-        return categoryInternalMapper.toResult(save);
+        return categoryInternalMapper.map(save);
     }
 
     @IsValid
