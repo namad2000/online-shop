@@ -50,6 +50,9 @@ public class CategoryRepositoryAdapter implements CategoryRepository {
                         .id(categoryFound.getId())
                         .title(categoryFound.getTitle())
                         .description(categoryFound.getDescription())
+                        .level(categoryFound.getLevel())
+                        .title(categoryFound.getTitle())
+                        .version(categoryFound.getVersion())
                         .build()
         );
     }
