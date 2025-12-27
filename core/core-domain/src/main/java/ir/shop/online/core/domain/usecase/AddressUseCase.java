@@ -1,7 +1,7 @@
 package ir.shop.online.core.domain.usecase;
 
-import ir.shop.online.core.domain.model.address.Address;
-import ir.shop.online.core.domain.model.address.CreateAddress;
+import ir.shop.online.core.domain.model.Address;
+import ir.shop.online.core.domain.model.cmd.address.CreateAddress;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package ir.shop.online.core.infrastructure.persistence.repository.jpa;
 
 
-import ir.shop.online.core.domain.model.user.User;
+import ir.shop.online.core.domain.model.User;
 import ir.shop.online.core.domain.repository.jpa.UserRepository;
 import org.springframework.stereotype.Repository;
 

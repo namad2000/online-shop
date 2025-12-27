@@ -1,7 +1,6 @@
 package ir.shop.online.core.domain.repository.jpa;
 
-
-import ir.shop.online.core.domain.model.user.User;
+import ir.shop.online.core.domain.model.User;
 
 import java.util.Optional;
 

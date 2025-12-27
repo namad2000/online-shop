@@ -1,7 +1,7 @@
 package ir.shop.online.core.presentation.rest;
 
-import ir.shop.online.core.domain.model.product.Product;
-import ir.shop.online.core.domain.model.product.cmd.CreateProductCmd;
+import ir.shop.online.core.domain.model.cmd.product.CreateProductCmd;
+import ir.shop.online.core.domain.model.result.product.ProductResult;
 import ir.shop.online.core.domain.usecase.ProductUseCase;
 import ir.shop.online.core.presentation.rest.dto.req.product.CreateProductRequest;
 import ir.shop.online.core.presentation.rest.dto.res.product.CreateProductResponse;
@@ -24,8 +24,8 @@ public class ProductController {
     public CreateProductResponse create(
             @RequestBody CreateProductRequest request) {
         CreateProductCmd command = productMapper.toCommand(request);
-        Product product = productUseCase.create(command);
-        return product;
+        ProductResult productResult = productUseCase.create(command);
+        return productMapper.toResponse(productResult);
     }
 
 //    @GetMapping("/{productId}")

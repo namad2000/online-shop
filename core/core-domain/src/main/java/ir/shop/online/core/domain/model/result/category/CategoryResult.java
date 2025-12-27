@@ -1,6 +1,5 @@
-package ir.shop.online.core.domain.model.category.result;
+package ir.shop.online.core.domain.model.result.category;
 
-import ir.shop.online.commons.domain.model.Version;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

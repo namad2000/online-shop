@@ -3,7 +3,7 @@ package ir.shop.online.core.application.adapter;
 
 import ir.shop.online.commons.domain.annotation.UseCaseService;
 import ir.shop.online.commons.domain.exception.DomainBusinessException;
-import ir.shop.online.core.domain.model.role.Role;
+import ir.shop.online.core.domain.model.Role;
 import ir.shop.online.core.domain.repository.jpa.RoleRepository;
 import ir.shop.online.core.domain.usecase.RoleUseCase;
 import lombok.RequiredArgsConstructor;

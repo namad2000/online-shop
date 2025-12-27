@@ -1,8 +1,8 @@
-package ir.shop.online.core.domain.model.address;
+package ir.shop.online.core.domain.model.cmd.address;
 
 
 import ir.shop.online.commons.domain.validation.IsValid;
-import ir.shop.online.core.domain.model.user.User;
+import ir.shop.online.core.domain.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -1,9 +1,7 @@
-package ir.shop.online.core.domain.model.user;
+package ir.shop.online.core.domain.model;
 
 
 import ir.shop.online.commons.domain.model.Version;
-import ir.shop.online.core.domain.model.address.Address;
-import ir.shop.online.core.domain.model.role.Role;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 

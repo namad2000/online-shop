@@ -1,5 +1,4 @@
-package ir.shop.online.core.domain.model.role;
-
+package ir.shop.online.core.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

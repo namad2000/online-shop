@@ -1,4 +1,4 @@
-package ir.shop.online.core.domain.model.product.cmd;
+package ir.shop.online.core.domain.model.cmd.product;
 
 import ir.shop.online.commons.domain.validation.Min;
 import ir.shop.online.commons.domain.validation.NotEmpty;

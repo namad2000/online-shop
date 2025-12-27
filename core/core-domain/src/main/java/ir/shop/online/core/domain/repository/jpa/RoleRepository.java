@@ -1,7 +1,6 @@
 package ir.shop.online.core.domain.repository.jpa;
 
-
-import ir.shop.online.core.domain.model.role.Role;
+import ir.shop.online.core.domain.model.Role;
 
 import java.util.Optional;
 

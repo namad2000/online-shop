@@ -1,4 +1,4 @@
-package ir.shop.online.core.domain.model.address;
+package ir.shop.online.core.domain.model.cmd.user;
 
 
 import lombok.AllArgsConstructor;

@@ -1,15 +1,12 @@
-package ir.shop.online.core.domain.model.product.result;
+package ir.shop.online.core.domain.model.result.product;
 
-import ir.shop.online.commons.domain.validation.Min;
-import ir.shop.online.commons.domain.validation.NotEmpty;
-import ir.shop.online.commons.domain.validation.NotNull;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Data
-public class CreateProductResult {
+public class ProductResult {
 
     private String title;
 

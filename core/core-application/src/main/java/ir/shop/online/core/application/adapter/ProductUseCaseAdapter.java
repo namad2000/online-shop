@@ -5,11 +5,11 @@ import ir.shop.online.commons.domain.annotation.UseCaseService;
 import ir.shop.online.commons.domain.exception.DomainException;
 import ir.shop.online.commons.domain.validation.IsValid;
 import ir.shop.online.core.domain.exception.ProductExceptionCode;
+import ir.shop.online.core.domain.model.Category;
+import ir.shop.online.core.domain.model.Product;
 import ir.shop.online.core.domain.model.ProductImage;
-import ir.shop.online.core.domain.model.category.Category;
-import ir.shop.online.core.domain.model.product.Product;
-import ir.shop.online.core.domain.model.product.cmd.CreateProductCmd;
-import ir.shop.online.core.domain.model.product.result.CreateProductResult;
+import ir.shop.online.core.domain.model.cmd.product.CreateProductCmd;
+import ir.shop.online.core.domain.model.result.product.ProductResult;
 import ir.shop.online.core.domain.repository.jpa.ProductRepository;
 import ir.shop.online.core.domain.usecase.CategoryUseCase;
 import ir.shop.online.core.domain.usecase.ProductUseCase;
@@ -23,7 +23,7 @@ public class ProductUseCaseAdapter implements ProductUseCase {
     private final CategoryUseCase categoryUseCase;
 
     @Override
-    public CreateProductResult create(@IsValid CreateProductCmd request) {
+    public ProductResult create(@IsValid CreateProductCmd request) {
 
         // بررسی وجود دسته‌بندی
         Category category = categoryUseCase.getById(request.getCategoryId());
@@ -46,13 +46,14 @@ public class ProductUseCaseAdapter implements ProductUseCase {
 
         // افزودن تصاویر
         if (request.getImageUrls() != null) {
+            Product finalProduct = product;
             request.getImageUrls().forEach(url -> {
                 ProductImage image = ProductImage.builder()
                         .url(url)
                         .isMain(false)
-                        .product(product)
+                        .product(finalProduct)
                         .build();
-                product.getImages().add(image);
+                finalProduct.getImages().add(image);
             });
         }
 

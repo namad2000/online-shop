@@ -1,9 +1,8 @@
 package ir.shop.online.core.presentation.rest;
 
-
-import ir.shop.online.core.domain.model.category.Category;
-import ir.shop.online.core.domain.model.category.cmd.CreateCategoryCmd;
-import ir.shop.online.core.domain.model.category.cmd.UpdateCategoryCmd;
+import ir.shop.online.core.domain.model.Category;
+import ir.shop.online.core.domain.model.cmd.category.CreateCategoryCmd;
+import ir.shop.online.core.domain.model.cmd.category.UpdateCategoryCmd;
 import ir.shop.online.core.domain.usecase.CategoryUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

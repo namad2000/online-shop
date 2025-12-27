@@ -1,4 +1,4 @@
-package ir.shop.online.core.domain.model.category.cmd;
+package ir.shop.online.core.domain.model.cmd.category;
 
 
 import ir.shop.online.commons.domain.validation.NotEmpty;

@@ -1,4 +1,4 @@
-package ir.shop.online.core.domain.model.category;
+package ir.shop.online.core.domain.model;
 
 import ir.shop.online.commons.domain.model.Version;
 import lombok.AllArgsConstructor;

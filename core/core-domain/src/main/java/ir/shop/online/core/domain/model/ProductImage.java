@@ -1,6 +1,5 @@
 package ir.shop.online.core.domain.model;
 
-import ir.shop.online.core.domain.model.product.Product;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

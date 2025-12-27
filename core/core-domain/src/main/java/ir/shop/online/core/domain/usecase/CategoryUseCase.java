@@ -1,9 +1,9 @@
 package ir.shop.online.core.domain.usecase;
 
 
-import ir.shop.online.core.domain.model.category.Category;
-import ir.shop.online.core.domain.model.category.cmd.CreateCategoryCmd;
-import ir.shop.online.core.domain.model.category.cmd.UpdateCategoryCmd;
+import ir.shop.online.core.domain.model.Category;
+import ir.shop.online.core.domain.model.cmd.category.CreateCategoryCmd;
+import ir.shop.online.core.domain.model.cmd.category.UpdateCategoryCmd;
 
 public interface CategoryUseCase {
     Category create(CreateCategoryCmd createCategoryCmd);

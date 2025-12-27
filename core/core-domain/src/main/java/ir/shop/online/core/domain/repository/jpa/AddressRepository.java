@@ -1,7 +1,8 @@
 package ir.shop.online.core.domain.repository.jpa;
 
-import ir.shop.online.core.domain.model.address.Address;
-import ir.shop.online.core.domain.model.user.User;
+
+import ir.shop.online.core.domain.model.Address;
+import ir.shop.online.core.domain.model.User;
 
 import java.util.List;
 import java.util.Optional;
