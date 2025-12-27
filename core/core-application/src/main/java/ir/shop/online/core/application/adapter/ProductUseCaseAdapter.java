@@ -4,11 +4,13 @@ package ir.shop.online.core.application.adapter;
 import ir.shop.online.commons.domain.annotation.UseCaseService;
 import ir.shop.online.commons.domain.exception.DomainException;
 import ir.shop.online.commons.domain.validation.IsValid;
+import ir.shop.online.core.application.mapper.CategoryInternalMapper;
 import ir.shop.online.core.domain.exception.ProductExceptionCode;
 import ir.shop.online.core.domain.model.Category;
 import ir.shop.online.core.domain.model.Product;
 import ir.shop.online.core.domain.model.ProductImage;
 import ir.shop.online.core.domain.model.cmd.product.CreateProductCmd;
+import ir.shop.online.core.domain.model.result.category.CategoryResult;
 import ir.shop.online.core.domain.model.result.product.ProductResult;
 import ir.shop.online.core.domain.repository.jpa.ProductRepository;
 import ir.shop.online.core.domain.usecase.CategoryUseCase;
@@ -21,12 +23,14 @@ public class ProductUseCaseAdapter implements ProductUseCase {
 
     private final ProductRepository productRepository;
     private final CategoryUseCase categoryUseCase;
+    private final CategoryInternalMapper categoryInternalMapper;
 
     @Override
     public ProductResult create(@IsValid CreateProductCmd request) {
 
         // بررسی وجود دسته‌بندی
-        Category category = categoryUseCase.getById(request.getCategoryId());
+        CategoryResult categoryResult = categoryUseCase.getById(request.getCategoryId());
+        Category category = categoryInternalMapper.map(categoryResult);
 
         // بررسی عدم تکراری بودن محصول در همان دسته
         boolean exists = productRepository.existsByNameAndCategory(request.getTitle(), category);

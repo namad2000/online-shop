@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateCategoryRequestDTO {
+public class CreateCategoryRequest {
 
     private String title;
 

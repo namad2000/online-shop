@@ -64,7 +64,7 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
 
     @IsValid
     @Override
-    public Category update(Integer id, UpdateCategoryCmd command) {
+    public CategoryResult update(Integer id, UpdateCategoryCmd command) {
 
         Category category = categoryRepository.findById(id)
                 .orElseThrow(() -> new DomainException(CategoryExceptionCode.CATEGORY_01.name()));
@@ -91,14 +91,14 @@ public class CategoryUseCaseAdapter implements CategoryUseCase {
         category.setTitle(command.getTitle());
         category.setDescription(command.getDescription());
 
-        return categoryRepository.save(category);
+        return categoryInternalMapper.map(categoryRepository.save(category));
     }
 
     @IsValid
     @Override
-    public Category getById(@NotNull Integer categoryId) {
-        return categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new DomainException(CategoryExceptionCode.CATEGORY_01.name()));
+    public CategoryResult getById(@NotNull Integer categoryId) {
+        return categoryInternalMapper.map(categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new DomainException(CategoryExceptionCode.CATEGORY_01.name())));
     }
 
     private static Category buildCategory(CreateCategoryCmd createCategoryCmd, Category parentCategory, int level) {

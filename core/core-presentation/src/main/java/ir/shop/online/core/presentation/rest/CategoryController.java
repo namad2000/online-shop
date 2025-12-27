@@ -5,6 +5,9 @@ import ir.shop.online.core.domain.model.cmd.category.CreateCategoryCmd;
 import ir.shop.online.core.domain.model.cmd.category.UpdateCategoryCmd;
 import ir.shop.online.core.domain.model.result.category.CategoryResult;
 import ir.shop.online.core.domain.usecase.CategoryUseCase;
+import ir.shop.online.core.presentation.rest.dto.req.category.CreateCategoryRequest;
+import ir.shop.online.core.presentation.rest.dto.res.category.CategoryResponse;
+import ir.shop.online.core.presentation.rest.mapper.CategoryCommandMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,12 +17,14 @@ import org.springframework.web.bind.annotation.*;
 public class CategoryController {
 
     private final CategoryUseCase categoryUseCase;
-//    private final CategoryMapper categoryMapper;
+    private final CategoryCommandMapper categoryCommandMapper;
 
     @PostMapping("/create")
-    public CategoryResult create(
-            @RequestBody CreateCategoryCmd request) {
-        return categoryUseCase.create(request);
+    public CategoryResponse create(
+            @RequestBody CreateCategoryRequest request) {
+        CreateCategoryCmd command = categoryCommandMapper.toCommand(request);
+        CategoryResult result = categoryUseCase.create(command);
+        return categoryCommandMapper.toResponse(result);
     }
 
     @PutMapping("/{categoryId}")
@@ -30,7 +35,7 @@ public class CategoryController {
     }
 
     @GetMapping("{id}")
-    public Category getById(@PathVariable("id") Integer id) {
-        return categoryUseCase.getById(id);
+    public CategoryResponse getById(@PathVariable("id") Integer id) {
+        return categoryCommandMapper.toResponse(categoryUseCase.getById(id));
     }
 }
