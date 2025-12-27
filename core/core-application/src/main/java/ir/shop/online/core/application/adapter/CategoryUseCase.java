@@ -28,9 +28,7 @@ public class CategoryUseCase {
     }
 
     public CategoryResult update(@IsValid UpdateCategoryCmd command) {
-
         Category category = updateCategoryMapper.toDomain(command);
-
         return categoryMapper.toResult(categoryService.update(category));
     }
 
