@@ -1,0 +1,27 @@
+package ir.online.shop.domain.model.otp;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
+import java.time.LocalDateTime;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@SuperBuilder
+public class OTP {
+
+    private String code;
+    private String identifier; // ایمیل یا شماره موبایل
+    private OTPType type;
+
+    @Builder.Default
+    private int attempts = 0;
+    private LocalDateTime createdAt;
+    private LocalDateTime expiresAt;
+}
+
+

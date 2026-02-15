@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.qoop</groupId>
+        <artifactId>qoop-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>shop</artifactId>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>shop-application</module>
+        <module>shop-infrastructure</module>
+        <module>shop-presentation</module>
+        <module>shop-container</module>
+        <module>shop-domain</module>
+    </modules>
+
+    <properties>
+        <shop-domain.version>0.0.1-SNAPSHOT</shop-domain.version>
+        <shop-application.version>0.0.1-SNAPSHOT</shop-application.version>
+        <shop-infrastructure.version>0.0.1-SNAPSHOT</shop-infrastructure.version>
+        <shop-presentation.version>0.0.1-SNAPSHOT</shop-presentation.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.qoop</groupId>
+                <artifactId>shop-domain</artifactId>
+                <version>${shop-domain.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.qoop</groupId>
+                <artifactId>shop-application</artifactId>
+                <version>${shop-application.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.qoop</groupId>
+                <artifactId>shop-infrastructure</artifactId>
+                <version>${shop-infrastructure.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.qoop</groupId>
+                <artifactId>shop-presentation</artifactId>
+                <version>${shop-presentation.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

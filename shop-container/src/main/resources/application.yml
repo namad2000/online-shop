@@ -1,0 +1,74 @@
+spring:
+  application:
+    name: online-shop
+  main:
+    banner-mode: off
+
+  threads:
+    virtual:
+      enabled: true
+
+  datasource:
+    url: jdbc:postgresql://172.16.15.22:5432/postgres
+    username: postgres
+    password: 1234
+
+    hikari:
+      connection-timeout: 20000
+      maximum-pool-size: 10
+  jpa:
+    hibernate:
+      ddl-auto: update  # (validate, update, create, create-drop)
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  data:
+    redis:
+      host: 172.16.15.69
+      port: 6379
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+
+server:
+  port: 8082
+  servlet:
+    context-path: /api
+
+discovery:
+  service:
+    host: ${CONSUL_SERVICE_HOST:localhost}
+    port: ${CONSUL_SERVICE_PORT:6060}
+    token: ${CONSUL_SERVICE_TOKEN:24e33f73-3726-6c32-0e62-6f226b18a9ce}
+  self:
+    prefer-ip-address: ${SELF_PREFER_IP_ADDRESS:false}
+    ip-address: ${SELF_IP_ADDRESS:192.168.30.100}
+    port: ${SELF_PORT:${server.port}}
+
+otp:
+  expiration-time: 300  # 5 دقیقه به ثانیه
+  max-attempts: 3
+  resend-cooldown: 60   # 1 دقیقه به
+
+doc:
+  title: Online Shop
+  version: 1.0.0 #${project.version}
+  description: Shop For Younger ...
+  server:
+    url: /api
+
+logging:
+  graylog:
+    enabled: false #If false, you will only see logs in the console.
+    host: 172.16.20.50
+
+security:
+  oauth2:
+    resourceserver:
+      jwt:
+        jwk-set-uri: http://192.168.20.30/jwt
