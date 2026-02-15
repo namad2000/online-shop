@@ -7,7 +7,7 @@
         <groupId>io.qoop</groupId>
         <artifactId>qoop-container</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../qoop/qoop-container</relativePath>
+        <relativePath/>
     </parent>
 
     <artifactId>shop-container</artifactId>
