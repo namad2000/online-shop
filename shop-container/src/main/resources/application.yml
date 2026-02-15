@@ -39,6 +39,9 @@ server:
   port: 8082
   servlet:
     context-path: /api
+app:
+  scan:
+    packages: ir.online
 
 discovery:
   service:
