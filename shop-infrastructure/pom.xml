@@ -13,6 +13,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
             <groupId>io.qoop</groupId>
             <artifactId>qoop-data-jpa-api</artifactId>
         </dependency>
